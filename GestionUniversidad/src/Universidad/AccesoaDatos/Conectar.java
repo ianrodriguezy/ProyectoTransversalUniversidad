@@ -14,13 +14,11 @@ import javax.swing.JOptionPane;
 
 
 public class Conectar {
-    private static String url="jdbc:mariadb://localhost:3306/gestionuniversidad";
-    private static String usuario="root";
-    private static String password="";
-            
-     
-      
+    private static final String url="jdbc:mariadb://localhost:3306/gestionuniversidad";
+    private static final String usuario="root";
+    private static final String password="";
     private static Conectar conectar=null;
+    private static final String Db="gestionuniversidad";
     
     private Conectar(){
         try{
