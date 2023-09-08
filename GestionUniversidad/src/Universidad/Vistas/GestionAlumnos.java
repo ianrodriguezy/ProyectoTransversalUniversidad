@@ -234,10 +234,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                 ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
                 ps.executeUpdate();
                 ResultSet rs = ps.getGeneratedKeys();
-//            if(rs.next()){
-//                a.setIdAlumno(rs.getInt(1));
-//                System.out.println("Alta exitosa");
-//            }
+
             } catch (SQLException x) {
                 System.out.println("Error " + x.getMessage());
 
