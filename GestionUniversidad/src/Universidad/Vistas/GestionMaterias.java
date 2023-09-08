@@ -8,12 +8,12 @@ package Universidad.Vistas;
  *
  * @author Ian
  */
-public class Materias extends javax.swing.JInternalFrame {
+public class GestionMaterias extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Materias
      */
-    public Materias() {
+    public GestionMaterias() {
         initComponents();
     }
 
