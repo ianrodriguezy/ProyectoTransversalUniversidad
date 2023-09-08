@@ -234,11 +234,18 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                 ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
                 ps.executeUpdate();
                 ResultSet rs = ps.getGeneratedKeys();
-
+                jtDoc.setText("");
+                jtApellido.setText("");
+                jtNombre.setText("");
+                jdFechaNac.setDate(null);
+                
             } catch (SQLException x) {
                 System.out.println("Error " + x.getMessage());
 
             }
+            JOptionPane.showMessageDialog(null, "Alta exitosa");
+            //jtDoc.removeAll();
+           
         }
            
         
