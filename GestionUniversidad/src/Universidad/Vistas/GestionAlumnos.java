@@ -262,7 +262,13 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtDocKeyReleased
 
     private void jtDocKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtDocKeyTyped
-       if(jtDoc.getText().length()>=8){
+        int key=evt.getKeyChar();
+        boolean num= key>=48 && key<=57;
+        if(!num){
+            evt.consume();
+        }
+        
+        if(jtDoc.getText().length()>=8){
            evt.consume();
        }
     }//GEN-LAST:event_jtDocKeyTyped
