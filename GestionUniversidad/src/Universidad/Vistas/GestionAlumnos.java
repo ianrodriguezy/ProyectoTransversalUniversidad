@@ -212,37 +212,41 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         PreparedStatement ps=null;
         boolean ver=false;
         int aux;
-        do{
-        do {
-            if(jtDoc.getText().isEmpty()||jtApellido.getText().isEmpty()||jtNombre.getText().isEmpty()||jdFechaNac.equals("")){
-                JOptionPane.showMessageDialog(null, "Todos o alguno de los campos se encuentran vacios, por favor rellene todos.");
-                break;
-            }else{
-                ver=true;}
-        }while (!ver);
-        }while(!ver);
-        if(jrbEstado.isSelected()){
-            aux=1;
-        }else{aux=0;}
-        LocalDate fecha= jdFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        java.sql.Date jdate = java.sql.Date.valueOf(fecha);
-        
-        
-        String sql= "INSERT INTO `alumno`(`dni`, `apellido`, `nombre`, `fechaNacimiento`, `estado`) VALUES ('"+jtDoc.getText()+"','"+jtApellido.getText()+"','"+jtNombre.getText()+"','"+jdate+"','"+aux+"')";
-        con=Conectar.getConectar();
-        
-        try{
-            ps= con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-            ps.executeUpdate();
-            ResultSet rs= ps.getGeneratedKeys();
+       
+        if (jtDoc.getText().isEmpty() || jtApellido.getText().isEmpty() || jtNombre.getText().isEmpty() || jdFechaNac.getDate()==null) {
+            JOptionPane.showMessageDialog(null, "Todos o alguno de los campos se encuentran vacios, por favor rellene todos.");
+            
+        } else {
+            ver = true;
+            if (jrbEstado.isSelected()) {
+                aux = 1;
+            } else {
+                aux = 0;
+            }
+
+            LocalDate fecha = jdFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            java.sql.Date jdate = java.sql.Date.valueOf(fecha);
+
+            String sql = "INSERT INTO `alumno`(`dni`, `apellido`, `nombre`, `fechaNacimiento`, `estado`) VALUES ('" + jtDoc.getText() + "','" + jtApellido.getText() + "','" + jtNombre.getText() + "','" + jdate + "','" + aux + "')";
+            con = Conectar.getConectar();
+
+            try {
+                ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                ps.executeUpdate();
+                ResultSet rs = ps.getGeneratedKeys();
 //            if(rs.next()){
 //                a.setIdAlumno(rs.getInt(1));
 //                System.out.println("Alta exitosa");
 //            }
-        }catch(SQLException x){
-            System.out.println("Error "+ x.getMessage());
-            
+            } catch (SQLException x) {
+                System.out.println("Error " + x.getMessage());
+
+            }
         }
+           
+        
+        
+        
     }//GEN-LAST:event_jbNuevoAlumnoActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
