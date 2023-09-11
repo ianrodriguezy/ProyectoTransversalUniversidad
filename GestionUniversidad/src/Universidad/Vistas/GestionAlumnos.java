@@ -4,7 +4,9 @@
  */
 package Universidad.Vistas;
 
+import Universidad.AccesoaDatos.AlumnoData;
 import Universidad.AccesoaDatos.Conectar;
+import Universidad.Entidades.Alumno;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -43,13 +45,13 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         jtDoc = new javax.swing.JTextField();
         jtApellido = new javax.swing.JTextField();
         jtNombre = new javax.swing.JTextField();
-        jrbEstado = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        jbBuscar = new javax.swing.JButton();
         jbNuevoAlumno = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
         jdFechaNac = new com.toedter.calendar.JDateChooser();
+        jrbEstado = new javax.swing.JCheckBox();
 
         jLabel1.setText("Alumno");
 
@@ -78,10 +80,10 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbBuscar.setText("Buscar");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbBuscarActionPerformed(evt);
             }
         });
 
@@ -128,7 +130,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                             .addComponent(jtNombre)
                             .addComponent(jtApellido))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(jbBuscar))
                     .addGroup(jPgestionLayout.createSequentialGroup()
                         .addGroup(jPgestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jdFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,7 +160,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                 .addGap(55, 55, 55)
                 .addGroup(jPgestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
+                    .addComponent(jbBuscar)
                     .addComponent(jLabel2))
                 .addGap(28, 28, 28)
                 .addGroup(jPgestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -171,11 +173,12 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                 .addGroup(jPgestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPgestionLayout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(jLabel5))
-                    .addGroup(jPgestionLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jrbEstado)))
-                .addGap(24, 24, 24)
+                        .addComponent(jLabel5)
+                        .addGap(28, 28, 28))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPgestionLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jrbEstado)
+                        .addGap(24, 24, 24)))
                 .addGroup(jPgestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
                     .addComponent(jdFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -208,19 +211,35 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtDocActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        Alumno al = new Alumno();
+        if (jtDoc.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese un dni para buscar el Alumno.");
+        } else {
+
+            al = AlumnoData.buscarAlumnoPorDni(Integer.parseInt(jtDoc.getText()));
+            boolean aux;
+            if (al.getActivo() == 1) {
+                aux = true;
+            } else {
+                aux = false;
+            }
+            jtDoc.setText(al.getDni() + "");
+            jtApellido.setText(al.getApellido());
+            jtNombre.setText(al.getNombre());
+            jdFechaNac.setDate(java.sql.Date.valueOf(al.getFechaNacimiento()));
+            jrbEstado.setSelected(aux);
+        }
+
+    }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbNuevoAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoAlumnoActionPerformed
-        Connection con=null;
-        PreparedStatement ps=null;
-        boolean ver=false;
+        boolean ver = false;
         int aux;
-       
-        if (jtDoc.getText().isEmpty() || jtApellido.getText().isEmpty() || jtNombre.getText().isEmpty() || jdFechaNac.getDate()==null) {
+
+        if (jtDoc.getText().isEmpty() || jtApellido.getText().isEmpty() || jtNombre.getText().isEmpty() || jdFechaNac.getDate() == null) {
             JOptionPane.showMessageDialog(null, "Todos o alguno de los campos se encuentran vacios, por favor rellene todos.");
-            
+
         } else {
             ver = true;
             if (jrbEstado.isSelected()) {
@@ -228,34 +247,16 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             } else {
                 aux = 0;
             }
-
             LocalDate fecha = jdFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             java.sql.Date jdate = java.sql.Date.valueOf(fecha);
-
-            String sql = "INSERT INTO `alumno`(`dni`, `apellido`, `nombre`, `fechaNacimiento`, `estado`) VALUES ('" + jtDoc.getText() + "','" + jtApellido.getText() + "','" + jtNombre.getText() + "','" + jdate + "','" + aux + "')";
-            con = Conectar.getConectar();
-
-            try {
-                ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-                ps.executeUpdate();
-                ResultSet rs = ps.getGeneratedKeys();
-                jtDoc.setText("");
-                jtApellido.setText("");
-                jtNombre.setText("");
-                jdFechaNac.setDate(null);
-                
-            } catch (SQLException x) {
-                System.out.println("Error " + x.getMessage());
-
-            }
-            JOptionPane.showMessageDialog(null, "Alta exitosa");
-            //jtDoc.removeAll();
-           
-        }
-           
-        
-        
-        
+            Alumno alumno = new Alumno(jtNombre.getText(), jtApellido.getText(), Integer.parseInt(jtDoc.getText()), fecha, aux);
+            AlumnoData.guardarAlumno(alumno);
+            jtDoc.setText("");
+            jtApellido.setText("");
+            jtNombre.setText("");
+            jdFechaNac.setDate(null);
+            jrbEstado.setSelected(false);
+        }  
     }//GEN-LAST:event_jbNuevoAlumnoActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
@@ -283,7 +284,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         Connection con=null;
         PreparedStatement ps=null;
          
-        String sql = "DELETE FROM `alumno`(`dni`, `apellido`, `nombre`, `fechaNacimiento`, `estado`) VALUES ('" + jtDoc.getText() + "','" + jtApellido.getText() + "','" + jtNombre.getText() + "','" + jdate + "','" + jrbEstado.getText() + "')";
+       //String sql = "DELETE FROM `alumno`(`dni`, `apellido`, `nombre`, `fechaNacimiento`, `estado`) VALUES ('" + jtDoc.getText() + "','" + jtApellido.getText() + "','" + jtNombre.getText() + "','" + jdate + "','" + jrbEstado.getText() + "')";
             con = Conectar.getConectar();
         
       
@@ -291,7 +292,6 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
@@ -301,10 +301,11 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPgestion;
+    private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbNuevoAlumno;
     private javax.swing.JButton jbSalir;
     private com.toedter.calendar.JDateChooser jdFechaNac;
-    private javax.swing.JRadioButton jrbEstado;
+    private javax.swing.JCheckBox jrbEstado;
     private javax.swing.JTextField jtApellido;
     private javax.swing.JTextField jtDoc;
     private javax.swing.JTextField jtNombre;
