@@ -46,9 +46,9 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         jtApellido = new javax.swing.JTextField();
         jtNombre = new javax.swing.JTextField();
         jbBuscar = new javax.swing.JButton();
-        jbNuevoAlumno = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jbNuevo = new javax.swing.JButton();
+        jbEliminar = new javax.swing.JButton();
+        jbGuardar = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
         jdFechaNac = new com.toedter.calendar.JDateChooser();
         jrbEstado = new javax.swing.JCheckBox();
@@ -87,21 +87,26 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
-        jbNuevoAlumno.setText("Nuevo");
-        jbNuevoAlumno.addActionListener(new java.awt.event.ActionListener() {
+        jbNuevo.setText("Nuevo");
+        jbNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbNuevoAlumnoActionPerformed(evt);
+                jbNuevoActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Eliminar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jbEliminar.setText("Eliminar");
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jbEliminarActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Guardar");
+        jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -143,11 +148,11 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                         .addComponent(jLabel1))
                     .addGroup(jPgestionLayout.createSequentialGroup()
                         .addGap(99, 99, 99)
-                        .addComponent(jbNuevoAlumno)
+                        .addComponent(jbNuevo)
                         .addGap(29, 29, 29)
-                        .addComponent(jButton3)
+                        .addComponent(jbEliminar)
                         .addGap(31, 31, 31)
-                        .addComponent(jButton4)
+                        .addComponent(jbGuardar)
                         .addGap(31, 31, 31)
                         .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(63, Short.MAX_VALUE))
@@ -184,9 +189,9 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                     .addComponent(jdFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addGroup(jPgestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbNuevoAlumno)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
+                    .addComponent(jbNuevo)
+                    .addComponent(jbEliminar)
+                    .addComponent(jbGuardar)
                     .addComponent(jbSalir))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
@@ -216,7 +221,6 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         if (jtDoc.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese un dni para buscar el Alumno.");
         } else {
-
             al = AlumnoData.buscarAlumnoPorDni(Integer.parseInt(jtDoc.getText()));
             boolean aux;
             if (al.getActivo() == 1) {
@@ -233,7 +237,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jbBuscarActionPerformed
 
-    private void jbNuevoAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoAlumnoActionPerformed
+    private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
         boolean ver = false;
         int aux;
 
@@ -241,6 +245,9 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Todos o alguno de los campos se encuentran vacios, por favor rellene todos.");
 
         } else {
+            if(!AlumnoData.buscarAlumnoPorDni(Integer.parseInt(jtDoc.getText())).getApellido().isEmpty()){
+                JOptionPane.showMessageDialog(null, "El Alumno que desea agregar ya existe.");
+            }else{
             ver = true;
             if (jrbEstado.isSelected()) {
                 aux = 1;
@@ -256,8 +263,8 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             jtNombre.setText("");
             jdFechaNac.setDate(null);
             jrbEstado.setSelected(false);
-        }  
-    }//GEN-LAST:event_jbNuevoAlumnoActionPerformed
+        }  }
+    }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         this.dispose();
@@ -279,21 +286,26 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
        }
     }//GEN-LAST:event_jtDocKeyTyped
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        Connection con=null;
-        PreparedStatement ps=null;
-         
-       //String sql = "DELETE FROM `alumno`(`dni`, `apellido`, `nombre`, `fechaNacimiento`, `estado`) VALUES ('" + jtDoc.getText() + "','" + jtApellido.getText() + "','" + jtNombre.getText() + "','" + jdate + "','" + jrbEstado.getText() + "')";
-            con = Conectar.getConectar();
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         
-      
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jbEliminarActionPerformed
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        int aux;
+        if (jtDoc.getText().isEmpty() || jtApellido.getText().isEmpty() || jtNombre.getText().isEmpty() || jdFechaNac.getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Todos o alguno de los campos se encuentran vacios, por favor rellene todos.");
+        }else{
+            if (jrbEstado.isSelected()) {
+                aux = 1;
+            } else {
+                aux = 0;
+            }
+            Alumno alumno=new Alumno(jtNombre.getText(), jtApellido.getText(), Integer.parseInt(jtDoc.getText()), jdFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),aux);
+            AlumnoData.modificarAlumno(alumno);}
+    }//GEN-LAST:event_jbGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -302,7 +314,9 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPgestion;
     private javax.swing.JButton jbBuscar;
-    private javax.swing.JButton jbNuevoAlumno;
+    private javax.swing.JButton jbEliminar;
+    private javax.swing.JButton jbGuardar;
+    private javax.swing.JButton jbNuevo;
     private javax.swing.JButton jbSalir;
     private com.toedter.calendar.JDateChooser jdFechaNac;
     private javax.swing.JCheckBox jrbEstado;

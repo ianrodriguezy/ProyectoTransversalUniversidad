@@ -50,11 +50,11 @@ public class AlumnoData {
         String sql = "SELECT idAlumno, dni, apellido, nombre, fechaNacimiento FROM alumno WHERE dni=? AND estado = 1";
         Connection con = null;
         PreparedStatement ps = null;
+        con = Conectar.getConectar();
         try {
-            ps.setInt(1, dni);
+           
             ps = con.prepareStatement(sql);
-            
-            
+            ps.setInt(1, dni);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
@@ -84,7 +84,31 @@ public class AlumnoData {
     }
     
     public static void modificarAlumno(Alumno alumno){
-        
+        String sql = "UPDATE alumno SET dni = ? , apellido = ?, nombre = ?, fechaNacimiento = ? WHERE idAlumno=? AND dni = ?";
+        Connection con = null;
+        PreparedStatement ps = null;
+        con = Conectar.getConectar();
+        try {
+           
+            ps = con.prepareStatement(sql);
+            
+                ps.setInt(1, alumno.getDni());
+                ps.setString(2,alumno.getApellido());
+                ps.setString(3,alumno.getNombre());
+                ps.setDate(4, java.sql.Date.valueOf(alumno.getFechaNacimiento()));
+                ps.setInt(5, alumno.getIdAlumno());
+                ps.setInt(6, alumno.getActivo());
+                
+                int exito= ps.executeUpdate();
+                if(exito==1){
+                    JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
+                }else{
+                    JOptionPane.showMessageDialog(null, "El alumno no existe");
+                }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno " + ex.getMessage());
+        }
     }
     
     public static void eliminarAlumno(int id){
