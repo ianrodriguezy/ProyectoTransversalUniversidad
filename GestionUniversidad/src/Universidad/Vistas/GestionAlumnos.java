@@ -93,6 +93,11 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         });
 
         jButton3.setText("Eliminar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Guardar");
 
@@ -272,6 +277,17 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
            evt.consume();
        }
     }//GEN-LAST:event_jtDocKeyTyped
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        Connection con=null;
+        PreparedStatement ps=null;
+         
+        String sql = "DELETE FROM `alumno`(`dni`, `apellido`, `nombre`, `fechaNacimiento`, `estado`) VALUES ('" + jtDoc.getText() + "','" + jtApellido.getText() + "','" + jtNombre.getText() + "','" + jdate + "','" + jrbEstado.getText() + "')";
+            con = Conectar.getConectar();
+        
+      
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -169,7 +169,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void itemManipulacionNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemManipulacionNotasActionPerformed
        Desktop.removeAll();
        Desktop.repaint();
-       GestionNotas gn = new GestionNotas();
+       gestionNotas gn = new gestionNotas();
        gn.setVisible(true);
        Desktop.add(gn);
        Desktop.moveToFront(gn);
