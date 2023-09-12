@@ -44,6 +44,7 @@ public class AlumnoData {
         PreparedStatement ps = null;
         try {
             Connection con = null;
+        
         con = Conectar.getConectar();
             ps = con.prepareStatement(sql);
             ps.setInt(1, id);
@@ -110,7 +111,7 @@ public class AlumnoData {
     }
 
     public static void modificarAlumno(Alumno alumno) {
-        String sql = "UPDATE alumno SET  apellido = ?, nombre = ?, fechaNacimiento = ? WHERE idAlumno=?";
+        String sql = "UPDATE alumno SET dni = ? , apellido = ?, nombre = ?, fechaNacimiento = ? WHERE idAlumno=?";
         Connection con = null;
         PreparedStatement ps = null;
         con = Conectar.getConectar();
@@ -118,12 +119,12 @@ public class AlumnoData {
 
             ps = con.prepareStatement(sql);
 
-//            ps.setInt(1, alumno.getDni());
-            ps.setString(1, alumno.getApellido());
-            ps.setString(2, alumno.getNombre());
-            ps.setDate(3, java.sql.Date.valueOf(alumno.getFechaNacimiento()));
-            ps.setInt(4, alumno.getIdAlumno());
-            ps.setInt(5, alumno.getActivo());
+            ps.setInt(1, alumno.getDni());
+            ps.setString(2, alumno.getApellido());
+            ps.setString(3, alumno.getNombre());
+            ps.setDate(4, java.sql.Date.valueOf(alumno.getFechaNacimiento()));
+            ps.setInt(5, alumno.getIdAlumno());
+            ps.setInt(6, alumno.getActivo());
 
             int exito = ps.executeUpdate();
             if (exito == 1) {
