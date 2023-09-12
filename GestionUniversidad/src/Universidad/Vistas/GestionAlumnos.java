@@ -21,13 +21,19 @@ import javax.swing.JOptionPane;
 
 public class GestionAlumnos extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form Alumnos
-     */
+    public int auxId;
+    
     public GestionAlumnos() {
         initComponents();
     }
 
+    public void limpiar(){
+            jtDoc.setText("");
+            jtApellido.setText("");
+            jtNombre.setText("");
+            jdFechaNac.setDate(null);
+            jrbEstado.setSelected(false);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -97,6 +103,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         });
 
         jbEliminar.setText("Eliminar");
+        jbEliminar.setEnabled(false);
         jbEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbEliminarActionPerformed(evt);
@@ -104,6 +111,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         });
 
         jbGuardar.setText("Guardar");
+        jbGuardar.setEnabled(false);
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbGuardarActionPerformed(evt);
@@ -220,20 +228,15 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         Alumno al = new Alumno();
-        Alumno al2 = new Alumno();
+       
         if (jtDoc.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese un dni para buscar el Alumno.");
         } else {
-            try {
-                al = AlumnoData.buscarAlumnoPorDni(Integer.parseInt(jtDoc.getText()));
-                al2=AlumnoData.buscarAlumno(WIDTH);
-            } catch (SQLException ex) {
-                Logger.getLogger(GestionAlumnos.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            al = AlumnoData.buscarAlumnoPorDni(Integer.parseInt(jtDoc.getText()));
             boolean aux;
-            if (al.getActivo() == 1 && al2.getActivo() == 1) {
+            if (al.getActivo() == 1 ) {
                 aux = true;
-            } else {
+            } else{
                 aux = false;
             }
             jtDoc.setText(al.getDni() + "");
@@ -241,11 +244,12 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             jtNombre.setText(al.getNombre());
             jdFechaNac.setDate(java.sql.Date.valueOf(al.getFechaNacimiento()));
             jrbEstado.setSelected(aux);
-            jtDoc.setText(al2.getDni() + "");
-            jtApellido.setText(al2.getApellido());
-            jtNombre.setText(al2.getNombre());
-            jdFechaNac.setDate(java.sql.Date.valueOf(al2.getFechaNacimiento()));
-            jrbEstado.setSelected(aux);
+            if(!al.getApellido().isEmpty()){
+                jbEliminar.setEnabled(true);
+                jbGuardar.setEnabled(true);
+                this.auxId=al.getIdAlumno();
+            }
+            
         }
 
     }//GEN-LAST:event_jbBuscarActionPerformed
@@ -271,11 +275,9 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             java.sql.Date jdate = java.sql.Date.valueOf(fecha);
             Alumno alumno = new Alumno(jtNombre.getText(), jtApellido.getText(), Integer.parseInt(jtDoc.getText()), fecha, aux);
             AlumnoData.guardarAlumno(alumno);
-            jtDoc.setText("");
-            jtApellido.setText("");
-            jtNombre.setText("");
-            jdFechaNac.setDate(null);
-            jrbEstado.setSelected(false);
+            limpiar();
+            jbEliminar.setEnabled(false);
+            jbGuardar.setEnabled(false);
         }  }
     }//GEN-LAST:event_jbNuevoActionPerformed
 
@@ -300,11 +302,15 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtDocKeyTyped
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        
+        AlumnoData.eliminarAlumno(auxId);
+        jbGuardar.setEnabled(false);
+        jbEliminar.setEnabled(false);
+        limpiar();
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         int aux;
+        
         if (jtDoc.getText().isEmpty() || jtApellido.getText().isEmpty() || jtNombre.getText().isEmpty() || jdFechaNac.getDate() == null) {
             JOptionPane.showMessageDialog(null, "Todos o alguno de los campos se encuentran vacios, por favor rellene todos.");
         }else{
@@ -313,9 +319,16 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             } else {
                 aux = 0;
             }
+            Alumno alumno=new Alumno(auxId,jtNombre.getText(), jtApellido.getText(), Integer.parseInt(jtDoc.getText()), jdFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),aux);
+            AlumnoData.modificarAlumno(alumno);
+            jbGuardar.setEnabled(false);
+            jbEliminar.setEnabled(false);
+            limpiar();
+        }
+        
             
-Alumno alumno=new Alumno(jtNombre.getText(), jtApellido.getText(), Integer.parseInt(jtDoc.getText()), jdFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),aux);
-            AlumnoData.modificarAlumno(alumno);}
+            
+            
     }//GEN-LAST:event_jbGuardarActionPerformed
 
 

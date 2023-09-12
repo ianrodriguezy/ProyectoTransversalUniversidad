@@ -4,17 +4,30 @@
  */
 package Universidad.Vistas;
 
+import Universidad.AccesoaDatos.AlumnoData;
+import Universidad.AccesoaDatos.MateriaData;
+import Universidad.Entidades.Alumno;
+import Universidad.Entidades.Materia;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Ian
  */
 public class GestionMaterias extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form Materias
-     */
+    
     public GestionMaterias() {
         initComponents();
+    }
+    
+    public void limpiar(){
+        jtCodigo.setText("");
+        jtAnio.setText("");
+        jcbEstado.setSelected(false);
+        jtNombre.setText("");
     }
 
     /**
@@ -32,9 +45,9 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jtCodigo = new javax.swing.JTextField();
+        jtNombre = new javax.swing.JTextField();
+        jtAnio = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -52,21 +65,44 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Estado");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jtCodigoActionPerformed(evt);
+            }
+        });
+        jtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtCodigoKeyTyped(evt);
+            }
+        });
+
+        jtAnio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtAnioKeyTyped(evt);
             }
         });
 
         jButton1.setText("Buscar");
 
         jButton2.setText("Nuevo");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Eliminar");
+        jButton3.setEnabled(false);
 
         jButton4.setText("Guardar");
+        jButton4.setEnabled(false);
 
         jButton5.setText("Salir");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -87,9 +123,9 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
-                                            .addComponent(jTextField2)
-                                            .addComponent(jTextField3))
+                                            .addComponent(jtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                                            .addComponent(jtNombre)
+                                            .addComponent(jtAnio))
                                         .addGap(37, 37, 37)
                                         .addComponent(jButton1))
                                     .addComponent(jcbEstado)))
@@ -114,16 +150,16 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jcbEstado)
@@ -153,9 +189,62 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCodigoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jtCodigoActionPerformed
+
+    private void jtAnioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtAnioKeyTyped
+       int key=evt.getKeyChar();
+        boolean num= key>=48 && key<=57;
+        if(!num){
+            evt.consume();
+        }
+        
+        if(jtAnio.getText().length()>=1){
+           evt.consume();
+       }
+    }//GEN-LAST:event_jtAnioKeyTyped
+
+    private void jtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtCodigoKeyTyped
+        int key=evt.getKeyChar();
+        boolean num= key>=48 && key<=57;
+        if(!num){
+            evt.consume();
+        }
+        
+        if(jtCodigo.getText().length()>=4){
+           evt.consume();
+       }
+    }//GEN-LAST:event_jtCodigoKeyTyped
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        boolean ver = false;
+        int aux;
+       
+        if (jtCodigo.getText().isEmpty() || jtNombre.getText().isEmpty() || jtAnio.getText().isEmpty() ) {
+            JOptionPane.showMessageDialog(null, "Todos o alguno de los campos se encuentran vacios, por favor rellene todos.");
+
+        } else {
+            if(!MateriaData.buscarMateria(Integer.parseInt(jtCodigo.getText())).getNombre().isEmpty()){
+                JOptionPane.showMessageDialog(null, "La materia que desea agregar ya existe.");
+            }else{
+            ver = true;
+            if (jcbEstado.isSelected()) {
+                aux = 1;
+            } else {
+                aux = 0;
+            }
+            Materia materia= new Materia(jtNombre.getText(), Integer.parseInt(jtAnio.getText()), aux);
+            MateriaData.guardarMateria(materia);
+            
+            limpiar();
+            
+        }  }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -170,9 +259,9 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JCheckBox jcbEstado;
+    private javax.swing.JTextField jtAnio;
+    private javax.swing.JTextField jtCodigo;
+    private javax.swing.JTextField jtNombre;
     // End of variables declaration//GEN-END:variables
 }
