@@ -12,6 +12,8 @@ import java.time.LocalDate;
 import java.time.ZoneId;
         
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 
@@ -218,12 +220,18 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         Alumno al = new Alumno();
+        Alumno al2 = new Alumno();
         if (jtDoc.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese un dni para buscar el Alumno.");
         } else {
-            al = AlumnoData.buscarAlumnoPorDni(Integer.parseInt(jtDoc.getText()));
+            try {
+                al = AlumnoData.buscarAlumnoPorDni(Integer.parseInt(jtDoc.getText()));
+                al2=AlumnoData.buscarAlumno(WIDTH);
+            } catch (SQLException ex) {
+                Logger.getLogger(GestionAlumnos.class.getName()).log(Level.SEVERE, null, ex);
+            }
             boolean aux;
-            if (al.getActivo() == 1) {
+            if (al.getActivo() == 1 && al2.getActivo() == 1) {
                 aux = true;
             } else {
                 aux = false;
@@ -232,6 +240,11 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             jtApellido.setText(al.getApellido());
             jtNombre.setText(al.getNombre());
             jdFechaNac.setDate(java.sql.Date.valueOf(al.getFechaNacimiento()));
+            jrbEstado.setSelected(aux);
+            jtDoc.setText(al2.getDni() + "");
+            jtApellido.setText(al2.getApellido());
+            jtNombre.setText(al2.getNombre());
+            jdFechaNac.setDate(java.sql.Date.valueOf(al2.getFechaNacimiento()));
             jrbEstado.setSelected(aux);
         }
 
@@ -300,7 +313,8 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             } else {
                 aux = 0;
             }
-            Alumno alumno=new Alumno(jtNombre.getText(), jtApellido.getText(), Integer.parseInt(jtDoc.getText()), jdFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),aux);
+            
+Alumno alumno=new Alumno(jtNombre.getText(), jtApellido.getText(), Integer.parseInt(jtDoc.getText()), jdFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),aux);
             AlumnoData.modificarAlumno(alumno);}
     }//GEN-LAST:event_jbGuardarActionPerformed
 
