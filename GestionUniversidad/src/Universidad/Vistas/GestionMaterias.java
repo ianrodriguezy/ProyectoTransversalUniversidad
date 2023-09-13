@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  * @author Ian
  */
 public class GestionMaterias extends javax.swing.JInternalFrame {
-
+    
     
     public GestionMaterias() {
         initComponents();
@@ -83,6 +83,11 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         });
 
         jbBuscar.setText("Buscar");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
 
         jbNuevo.setText("Nuevo");
         jbNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -93,9 +98,19 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
 
         jbEliminar.setText("Eliminar");
         jbEliminar.setEnabled(false);
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarActionPerformed(evt);
+            }
+        });
 
         jbGuardar.setText("Guardar");
         jbGuardar.setEnabled(false);
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -220,31 +235,93 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
         boolean ver = false;
         int aux;
-       
-        if (jtCodigo.getText().isEmpty() || jtNombre.getText().isEmpty() || jtAnio.getText().isEmpty() ) {
+
+        if (jtCodigo.getText().isEmpty() || jtNombre.getText().isEmpty() || jtAnio.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Todos o alguno de los campos se encuentran vacios, por favor rellene todos.");
 
         } else {
-            if(MateriaData.buscarMateria(Integer.parseInt(jtCodigo.getText())).getIdMateria()==Integer.parseInt(jtCodigo.getText())){
+            if (MateriaData.buscarMateria(Integer.parseInt(jtCodigo.getText()), 1) != null) {
                 JOptionPane.showMessageDialog(null, "La materia que desea agregar ya existe.");
-            }else{
-            ver = true;
-            if (jcbEstado.isSelected()) {
-                aux = 1;
             } else {
-                aux = 0;
+                ver = true;
+                if (jcbEstado.isSelected()) {
+                    aux = 1;
+                } else {
+                    aux = 0;
+                }
+                
+                Materia materia = new Materia(jtNombre.getText(), Integer.parseInt(jtAnio.getText()), aux);
+                MateriaData.guardarMateria(materia);
+
+                limpiar();
+
             }
-            Materia materia= new Materia(jtNombre.getText(), Integer.parseInt(jtAnio.getText()), aux);
-            MateriaData.guardarMateria(materia);
-            
-            limpiar();
-            
-        }  }
+        }
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+       Materia mat = new Materia();
+       
+        if (jtCodigo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese un codigo para buscar la materia.");
+        } else {
+            
+            boolean aux;
+            if(MateriaData.buscarMateria(Integer.parseInt(jtCodigo.getText()), 0)!=null){
+                mat=MateriaData.buscarMateria(Integer.parseInt(jtCodigo.getText()), 0);
+                
+                if (mat.getActivo() == 1 ) {
+                aux = true;
+            } else{
+                aux = false;
+            }
+                jtCodigo.setText(mat.getIdMateria()+"");
+                jtNombre.setText(mat.getNombre());
+                jtAnio.setText(mat.getAnioMateria()+"");
+                jcbEstado.setSelected(aux);
+            
+                
+            if(!mat.getNombre().isEmpty()){
+                jbEliminar.setEnabled(true);
+                jbGuardar.setEnabled(true);
+                //auxIdMat=jtCodigo
+            }
+            }
+            
+            
+        }
+    }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+        MateriaData.eliminarMateria(Integer.parseInt(jtCodigo.getText()));
+        jbGuardar.setEnabled(false);
+        jbEliminar.setEnabled(false);
+        limpiar();
+    }//GEN-LAST:event_jbEliminarActionPerformed
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        int aux;
+        
+        if (jtCodigo.getText().isEmpty() || jtNombre.getText().isEmpty() ||  jtAnio.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Todos o alguno de los campos se encuentran vacios, por favor rellene todos.");
+        }else{
+            if (jcbEstado.isSelected()) {
+                aux = 1;
+            } else {
+                aux = 0;
+            }
+
+            Materia materia=new Materia(Integer.parseInt(jtCodigo.getText()), jtNombre.getText(),Integer.parseInt(jtAnio.getText()), aux);
+            MateriaData.modificarMateria(materia);
+            jbGuardar.setEnabled(false);
+            jbEliminar.setEnabled(false);
+            limpiar();
+        }     
+    }//GEN-LAST:event_jbGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

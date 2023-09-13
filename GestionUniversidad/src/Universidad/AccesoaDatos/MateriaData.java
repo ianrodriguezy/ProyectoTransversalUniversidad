@@ -40,7 +40,7 @@ public class MateriaData {
         JOptionPane.showMessageDialog(null, "Materia creada exitosamente.");
     }
     
-    public static Materia buscarMateria(int id){
+    public static Materia buscarMateria(int id, int nuevo){
         Materia materia = null;
         String sql = "SELECT `idMateria`, `nombre`, `año`, `estado` FROM `materia` WHERE idMateria ="+id;
         PreparedStatement ps = null;
@@ -59,7 +59,7 @@ public class MateriaData {
                 materia.setAnioMateria(rs.getInt("año"));
                 materia.setActivo(rs.getInt("estado"));
 
-            } else {
+            } else if(nuevo!=1){
                 JOptionPane.showMessageDialog(null, "No existe la materia");
 
                 ps.close();
@@ -72,9 +72,48 @@ public class MateriaData {
         }
     
     public static void modificarMateria(Materia materia){
+        String sql = "UPDATE materia SET `idMateria`=?,`nombre`=?,`año`=?,`estado`=? WHERE idMateria="+materia.getIdMateria();
+        Connection con = null;
+        PreparedStatement ps = null;
+        con = Conectar.getConectar();
+        try {
+
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, materia.getIdMateria());
+            ps.setString(2, materia.getNombre());
+            ps.setInt(3, materia.getAnioMateria());
+            ps.setInt(4,materia.getActivo());
+
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Modificada Exitosamente.");
+            } else {
+                JOptionPane.showMessageDialog(null, "La materia no existe");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia " + ex.getMessage());
+        }
     }
     
-    public static void eliminarMateria(int id){        
+    public static void eliminarMateria(int id){ 
+        Connection con = null;
+        PreparedStatement ps = null;
+        con = Conectar.getConectar();
+        
+        try {
+            String sql = "UPDATE materia SET estado = 0 WHERE idMateria = "+id;
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            int fila = ps.executeUpdate();
+
+            if (fila == 1) {
+                JOptionPane.showMessageDialog(null, " Se eliminó la materia.");
+            }
+            ps.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Materia");
+        }
     }
     public static List<Materia> listarMaterias(){
      return null;   

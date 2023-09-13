@@ -329,11 +329,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             jbGuardar.setEnabled(false);
             jbEliminar.setEnabled(false);
             limpiar();
-        }
-        
-            
-            
-            
+        }     
     }//GEN-LAST:event_jbGuardarActionPerformed
 
 
