@@ -8,12 +8,12 @@ package Universidad.Vistas;
  *
  * @author Ian
  */
-public class GestionNotas extends javax.swing.JInternalFrame {
+public class gestionNotas extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form gestionNotas
      */
-    public GestionNotas() {
+    public gestionNotas() {
         initComponents();
     }
 

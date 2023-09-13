@@ -8,12 +8,10 @@ package Universidad.Vistas;
  *
  * @author Ian
  */
-public class ConsultaAlumno extends javax.swing.JInternalFrame {
+public class ConsultaAlumnoPorMateria extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form ConsultaAlumno
-     */
-    public ConsultaAlumno() {
+    
+    public ConsultaAlumnoPorMateria() {
         initComponents();
     }
 
