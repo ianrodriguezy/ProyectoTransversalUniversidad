@@ -288,7 +288,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             if(!mat.getNombre().isEmpty()){
                 jbEliminar.setEnabled(true);
                 jbGuardar.setEnabled(true);
-                //auxIdMat=jtCodigo
+                jtCodigo.setEnabled(false);
             }
             }
             
@@ -300,6 +300,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         MateriaData.eliminarMateria(Integer.parseInt(jtCodigo.getText()));
         jbGuardar.setEnabled(false);
         jbEliminar.setEnabled(false);
+        jtCodigo.setEnabled(true);
         limpiar();
     }//GEN-LAST:event_jbEliminarActionPerformed
 
@@ -319,6 +320,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             MateriaData.modificarMateria(materia);
             jbGuardar.setEnabled(false);
             jbEliminar.setEnabled(false);
+            jtCodigo.setEnabled(true);
             limpiar();
         }     
     }//GEN-LAST:event_jbGuardarActionPerformed
