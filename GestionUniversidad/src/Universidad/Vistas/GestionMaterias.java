@@ -48,11 +48,11 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         jtCodigo = new javax.swing.JTextField();
         jtNombre = new javax.swing.JTextField();
         jtAnio = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jbBuscar = new javax.swing.JButton();
+        jbNuevo = new javax.swing.JButton();
+        jbEliminar = new javax.swing.JButton();
+        jbGuardar = new javax.swing.JButton();
+        jbSalir = new javax.swing.JButton();
         jcbEstado = new javax.swing.JCheckBox();
 
         jLabel1.setText("Materia");
@@ -82,25 +82,25 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText("Buscar");
+        jbBuscar.setText("Buscar");
 
-        jButton2.setText("Nuevo");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jbNuevo.setText("Nuevo");
+        jbNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jbNuevoActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Eliminar");
-        jButton3.setEnabled(false);
+        jbEliminar.setText("Eliminar");
+        jbEliminar.setEnabled(false);
 
-        jButton4.setText("Guardar");
-        jButton4.setEnabled(false);
+        jbGuardar.setText("Guardar");
+        jbGuardar.setEnabled(false);
 
-        jButton5.setText("Salir");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jbSalir.setText("Salir");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jbSalirActionPerformed(evt);
             }
         });
 
@@ -127,16 +127,16 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                                             .addComponent(jtNombre)
                                             .addComponent(jtAnio))
                                         .addGap(37, 37, 37)
-                                        .addComponent(jButton1))
+                                        .addComponent(jbBuscar))
                                     .addComponent(jcbEstado)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton2)
+                                .addComponent(jbNuevo)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton3)
+                                .addComponent(jbEliminar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton4)
+                                .addComponent(jbGuardar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton5))))
+                                .addComponent(jbSalir))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(160, 160, 160)
                         .addComponent(jLabel1)))
@@ -151,7 +151,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(jbBuscar))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -168,10 +168,10 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                         .addGap(8, 8, 8)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
+                    .addComponent(jbNuevo)
+                    .addComponent(jbEliminar)
+                    .addComponent(jbGuardar)
+                    .addComponent(jbSalir))
                 .addGap(17, 17, 17))
         );
 
@@ -217,7 +217,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
        }
     }//GEN-LAST:event_jtCodigoKeyTyped
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
         boolean ver = false;
         int aux;
        
@@ -225,7 +225,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Todos o alguno de los campos se encuentran vacios, por favor rellene todos.");
 
         } else {
-            if(!MateriaData.buscarMateria(Integer.parseInt(jtCodigo.getText())).getNombre().isEmpty()){
+            if(MateriaData.buscarMateria(Integer.parseInt(jtCodigo.getText())).getIdMateria()==Integer.parseInt(jtCodigo.getText())){
                 JOptionPane.showMessageDialog(null, "La materia que desea agregar ya existe.");
             }else{
             ver = true;
@@ -240,25 +240,25 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             limpiar();
             
         }  }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jbNuevoActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jbSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jbBuscar;
+    private javax.swing.JButton jbEliminar;
+    private javax.swing.JButton jbGuardar;
+    private javax.swing.JButton jbNuevo;
+    private javax.swing.JButton jbSalir;
     private javax.swing.JCheckBox jcbEstado;
     private javax.swing.JTextField jtAnio;
     private javax.swing.JTextField jtCodigo;

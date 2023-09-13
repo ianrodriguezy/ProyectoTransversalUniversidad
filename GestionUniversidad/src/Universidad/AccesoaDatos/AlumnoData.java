@@ -72,7 +72,7 @@ public class AlumnoData {
     }
     
 
-    public static Alumno buscarAlumnoPorDni(int dni) {
+    public static Alumno buscarAlumnoPorDni(int dni, int nuevo) {
         Alumno alumno = null;
         String sql = "SELECT idAlumno, dni, apellido, nombre, fechaNacimiento FROM alumno WHERE dni=? AND estado = 1";
         Connection con = null;
@@ -93,7 +93,7 @@ public class AlumnoData {
                 alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
                 alumno.setActivo(1);
 
-            } else {
+            } else if (nuevo!=1){
                 JOptionPane.showMessageDialog(null, "No existe el alumno");
 
             }

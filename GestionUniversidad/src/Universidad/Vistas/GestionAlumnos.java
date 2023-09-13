@@ -232,9 +232,11 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         if (jtDoc.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese un dni para buscar el Alumno.");
         } else {
-            al = AlumnoData.buscarAlumnoPorDni(Integer.parseInt(jtDoc.getText()));
+            
             boolean aux;
-            if (al.getActivo() == 1 ) {
+            if(AlumnoData.buscarAlumnoPorDni(Integer.parseInt(jtDoc.getText()),0)!=null){
+                al=AlumnoData.buscarAlumnoPorDni(Integer.parseInt(jtDoc.getText()),0);
+                if (al.getActivo() == 1 ) {
                 aux = true;
             } else{
                 aux = false;
@@ -249,23 +251,25 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                 jbGuardar.setEnabled(true);
                 this.auxId=al.getIdAlumno();
             }
+            }
+            
             
         }
 
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        boolean ver = false;
+        
         int aux;
 
         if (jtDoc.getText().isEmpty() || jtApellido.getText().isEmpty() || jtNombre.getText().isEmpty() || jdFechaNac.getDate() == null) {
             JOptionPane.showMessageDialog(null, "Todos o alguno de los campos se encuentran vacios, por favor rellene todos.");
 
         } else {
-            if(!AlumnoData.buscarAlumnoPorDni(Integer.parseInt(jtDoc.getText())).getApellido().isEmpty()){
+            if(AlumnoData.buscarAlumnoPorDni(Integer.parseInt(jtDoc.getText()),1)!=null){
                 JOptionPane.showMessageDialog(null, "El Alumno que desea agregar ya existe.");
             }else{
-            ver = true;
+            
             if (jrbEstado.isSelected()) {
                 aux = 1;
             } else {
@@ -278,7 +282,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             limpiar();
             jbEliminar.setEnabled(false);
             jbGuardar.setEnabled(false);
-        }  }
+        }   }
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
