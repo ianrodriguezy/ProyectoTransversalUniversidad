@@ -4,17 +4,20 @@
  */
 package Universidad.Vistas;
 
+import Universidad.AccesoaDatos.AlumnoData;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Ian
  */
 public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form FormulariodeInscripciones
-     */
+    List alumnos=new ArrayList<>();
     public FormulariodeInscripciones() {
         initComponents();
+        alumnos=AlumnoData.listarAlumno();
     }
 
     /**
