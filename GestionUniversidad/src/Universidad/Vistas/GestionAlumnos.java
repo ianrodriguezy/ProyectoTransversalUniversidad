@@ -323,6 +323,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             } else {
                 aux = 0;
             }
+
             Alumno alumno=new Alumno(auxId,jtNombre.getText(), jtApellido.getText(), Integer.parseInt(jtDoc.getText()), jdFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),aux);
             AlumnoData.modificarAlumno(alumno);
             jbGuardar.setEnabled(false);
