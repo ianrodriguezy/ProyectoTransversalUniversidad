@@ -5,19 +5,22 @@
 package Universidad.Vistas;
 
 import Universidad.AccesoaDatos.AlumnoData;
+import Universidad.Entidades.Alumno;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
  * @author Ian
  */
 public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
-
+ 
     List alumnos=new ArrayList<>();
     public FormulariodeInscripciones() {
         initComponents();
         alumnos=AlumnoData.listarAlumno();
+           cargarCombo();
     }
 
     /**
@@ -51,7 +54,11 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Listado de materias");
 
-        jcbAlumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbAlumnosActionPerformed(evt);
+            }
+        });
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -158,6 +165,10 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jcbAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAlumnosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbAlumnosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -171,6 +182,22 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
-    private javax.swing.JComboBox<String> jcbAlumnos;
+    private javax.swing.JComboBox<Alumno> jcbAlumnos;
     // End of variables declaration//GEN-END:variables
+
+private void cargarCombo(){
+
+DefaultComboBoxModel<Alumno> modeloCombo = new DefaultComboBoxModel<>();
+
+
+for (Object alumno : alumnos) {
+    modeloCombo.addElement((Alumno) alumno);
 }
+
+jcbAlumnos.setModel(modeloCombo);
+
+}
+}
+
+
+
