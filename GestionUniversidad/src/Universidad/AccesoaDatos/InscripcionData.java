@@ -8,7 +8,12 @@ import Universidad.Entidades.Alumno;
 import Universidad.Entidades.Inscripcion;
 import Universidad.Entidades.Materia;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 
 public class InscripcionData {
@@ -24,10 +29,38 @@ public class InscripcionData {
     }
     
     public static List<Inscripcion> obtenerInscripciones(){
+        String sql="SELECT * FROM `inscripcion` INNER JOIN materia ON inscripcion.idMateria=materia.idMateria INNER JOIN alumno ON inscripcion.idAlumno=alumno.idAlumno";
         return null;
     }
+    
     public static List<Inscripcion> obtenerInscripcionesPorAlumno(int id){
-        return null;
+        List<Inscripcion> inscripciones=new ArrayList<>();
+        Connection con = null;
+        PreparedStatement ps = null;
+        con = Conectar.getConectar();
+        try{
+            String sql= "SELECT inscripcion.idAlumno,inscripcion.idMateria,idInscripcion,nota FROM `inscripcion` INNER JOIN materia ON inscripcion.idMateria=materia.idMateria INNER JOIN alumno ON inscripcion.idAlumno=alumno.idAlumno WHERE inscripcion.idAlumno="+id;
+            ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Inscripcion inscripcion=new Inscripcion();
+                Materia materia=new Materia();
+                Alumno alumno = new Alumno();
+                alumno.setIdAlumno(rs.getInt("idAlumno"));
+                materia.setIdMateria(rs.getInt("idMateria"));
+                inscripcion.setAlumno(alumno);
+                inscripcion.setIdInscripcion(rs.getInt("idInscripcion"));
+                inscripcion.setNota(rs.getInt("nota"));
+                inscripcion.setMateria(materia);
+                inscripciones.add(inscripcion);
+            }
+            ps.close();
+        }catch(SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia " + ex.getMessage());
+            
+        }
+        return inscripciones;
+       
     }
     public static List<Materia> obtenerMateriasCursadas(int id){
         return null;
