@@ -3,6 +3,7 @@ package Universidad.Vistas;
 
 import Universidad.AccesoaDatos.AlumnoData;
 import Universidad.AccesoaDatos.InscripcionData;
+import Universidad.AccesoaDatos.MateriaData;
 import Universidad.Entidades.Alumno;
 import Universidad.Entidades.Inscripcion;
 import java.util.ArrayList;
@@ -14,12 +15,17 @@ import javax.swing.table.DefaultTableModel;
 public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
  
     List alumnos=new ArrayList<>();
+    List materia=new ArrayList<>();
     
     private DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int f, int c) {
             return false;
         }
     };
+    
+    private void cargarMaterias(){
+        materia = MateriaData.listarMaterias();
+    }
     
     private void cargarModelo (){
         modelo.addColumn("ID");
@@ -38,6 +44,7 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
         alumnos=AlumnoData.listarAlumno();
            cargarCombo();
            cargarModelo();
+           cargarMaterias();
     }
 
     /**
@@ -59,7 +66,7 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
         jbInscribir = new javax.swing.JButton();
         jbAnularInsc = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
-        jcbInsciptas = new javax.swing.JCheckBox();
+        jcbInscriptas = new javax.swing.JCheckBox();
         jcbNoInscriptas = new javax.swing.JCheckBox();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -106,8 +113,8 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
             }
         });
 
-        jcbInsciptas.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jcbInsciptas.setText("Materias Inscriptas");
+        jcbInscriptas.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jcbInscriptas.setText("Materias Inscriptas");
 
         jcbNoInscriptas.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jcbNoInscriptas.setText("Materias no Inscriptas");
@@ -144,7 +151,7 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
                         .addComponent(jbSalir))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(52, 52, 52)
-                        .addComponent(jcbInsciptas)
+                        .addComponent(jcbInscriptas)
                         .addGap(59, 59, 59)
                         .addComponent(jcbNoInscriptas)))
                 .addContainerGap(14, Short.MAX_VALUE))
@@ -162,7 +169,7 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jcbInsciptas)
+                    .addComponent(jcbInscriptas)
                     .addComponent(jcbNoInscriptas))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,13 +208,10 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jcbAlumnosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbAlumnosItemStateChanged
-//        Alumno alum= (Alumno)jcbAlumnos.getSelectedItem();
-//        List <Inscripcion> ins= new ArrayList<>();
-//        InscripcionData.obtenerInscripcionesPorAlumno(alum.getIdAlumno());
-//        for(Inscripcion a : ins){
-//            modelo.addRow(new Inscripcion[]{a});
-//        }
-//        jtablaMaterias.setModel(modelo);        NO SE QUE HICE QUISE CARGAR DATOS A LA TABLA
+//        
+//       if (evt.getStateChange() == java.awt.event.ItemEvent.DESELECTED) {
+//            borrarFilas();
+//        for(Materia )
     }//GEN-LAST:event_jcbAlumnosItemStateChanged
 
 
@@ -221,7 +225,7 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbInscribir;
     private javax.swing.JButton jbSalir;
     private javax.swing.JComboBox<Alumno> jcbAlumnos;
-    private javax.swing.JCheckBox jcbInsciptas;
+    private javax.swing.JCheckBox jcbInscriptas;
     private javax.swing.JCheckBox jcbNoInscriptas;
     private javax.swing.JTable jtablaMaterias;
     // End of variables declaration//GEN-END:variables
@@ -238,6 +242,15 @@ for (Object alumno : alumnos) {
 jcbAlumnos.setModel(modeloCombo);
 
 }
+
+private void borrarFilas() {
+        int f;
+        int filas = jtablaMaterias.getRowCount() - 1;
+
+        for (f = filas; f >= 0; f--) {
+            modelo.removeRow(f);
+        }
+    }
 }
 
 
