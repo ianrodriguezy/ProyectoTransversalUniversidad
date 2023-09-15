@@ -6,6 +6,7 @@ import Universidad.AccesoaDatos.InscripcionData;
 import Universidad.AccesoaDatos.MateriaData;
 import Universidad.Entidades.Alumno;
 import Universidad.Entidades.Inscripcion;
+import Universidad.Entidades.Materia;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -36,7 +37,13 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
     }
     
     private void cargarTabla(){
-        
+        Alumno alumno=(Alumno)jcbAlumnos.getSelectedItem();
+        for(Materia m : InscripcionData.obtenerMateriasCursadas(alumno.getIdAlumno())){
+            modelo.addRow(new Object[]{
+                m.getIdMateria(),
+                m.getNombre(),
+                m.getAnioMateria()});
+        }
     }
     
     public FormulariodeInscripciones() {
@@ -103,6 +110,11 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(jtablaMaterias);
 
         jbInscribir.setText("Inscribir");
+        jbInscribir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbInscribirActionPerformed(evt);
+            }
+        });
 
         jbAnularInsc.setText("Anular Inscripción");
 
@@ -115,9 +127,24 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
 
         jcbInscriptas.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jcbInscriptas.setText("Materias Inscriptas");
+        jcbInscriptas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcbInscriptasItemStateChanged(evt);
+            }
+        });
+        jcbInscriptas.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jcbInscriptasStateChanged(evt);
+            }
+        });
 
         jcbNoInscriptas.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jcbNoInscriptas.setText("Materias no Inscriptas");
+        jcbNoInscriptas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcbNoInscriptasItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -208,12 +235,61 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jcbAlumnosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbAlumnosItemStateChanged
-//        
-//       if (evt.getStateChange() == java.awt.event.ItemEvent.DESELECTED) {
-//            borrarFilas();
-//        for(Materia )
+        
+       if (evt.getStateChange() == java.awt.event.ItemEvent.DESELECTED) {
+            borrarFilas();
+            jcbInscriptas.setSelected(false);
+            jcbNoInscriptas.setSelected(false);
+       }
     }//GEN-LAST:event_jcbAlumnosItemStateChanged
 
+    private void jcbInscriptasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jcbInscriptasStateChanged
+        
+    }//GEN-LAST:event_jcbInscriptasStateChanged
+
+    private void jcbInscriptasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbInscriptasItemStateChanged
+       
+        Alumno alumno=(Alumno)jcbAlumnos.getSelectedItem();
+        if(evt.getStateChange()== java.awt.event.ItemEvent.DESELECTED){
+            borrarFilas();
+        
+        
+        }else{
+            borrarFilas();
+            jcbNoInscriptas.setSelected(false);
+            jbAnularInsc.setEnabled(true);
+            jbInscribir.setEnabled(false);
+            for(Materia m : InscripcionData.obtenerMateriasCursadas(alumno.getIdAlumno())){
+            modelo.addRow(new Object[]{
+                m.getIdMateria(),
+                m.getNombre(),
+                m.getAnioMateria()});}
+        }
+    }//GEN-LAST:event_jcbInscriptasItemStateChanged
+
+    private void jcbNoInscriptasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbNoInscriptasItemStateChanged
+        Alumno alumno=(Alumno)jcbAlumnos.getSelectedItem();
+        if(evt.getStateChange()== java.awt.event.ItemEvent.DESELECTED){
+            borrarFilas();
+        
+        
+        }else{
+            borrarFilas();
+            jcbInscriptas.setSelected(false);
+            jbAnularInsc.setEnabled(false);
+            jbInscribir.setEnabled(true);
+            for(Materia m : InscripcionData.obtenerMateriasNoCursadas(alumno.getIdAlumno())){
+            modelo.addRow(new Object[]{
+                m.getIdMateria(),
+                m.getNombre(),
+                m.getAnioMateria()});}
+    }//GEN-LAST:event_jcbNoInscriptasItemStateChanged
+    }
+    
+    private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
+        
+    }//GEN-LAST:event_jbInscribirActionPerformed
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

@@ -179,6 +179,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Inscribir"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbInscribirActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jbAnularInsc">
           <Properties>
@@ -200,6 +203,10 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Materias Inscriptas"/>
           </Properties>
+          <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jcbInscriptasItemStateChanged"/>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jcbInscriptasStateChanged"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="jcbNoInscriptas">
           <Properties>
@@ -208,6 +215,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Materias no Inscriptas"/>
           </Properties>
+          <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jcbNoInscriptasItemStateChanged"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

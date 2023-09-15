@@ -117,7 +117,7 @@ public class MateriaData {
         }
     }
     public static List<Materia> listarMaterias(){
-       List<Materia> materias=new ArrayList<>();
+        List<Materia> materias=new ArrayList<>();
         Connection con = null;
         PreparedStatement ps = null;
         con = Conectar.getConectar();
