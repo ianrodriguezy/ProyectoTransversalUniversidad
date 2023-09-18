@@ -55,5 +55,10 @@ public class Materia {
         this.activo = activo;
     }
 
+    @Override
+    public String toString() {
+        return nombre +" ," +anioMateria ;
+    }
+
     
 }

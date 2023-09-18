@@ -87,7 +87,7 @@ public class InscripcionData {
         PreparedStatement ps = null;
         con = Conectar.getConectar();
         try{
-            String sql= "SELECT inscripcion.idAlumno,inscripcion.idMateria,idInscripcion,nota FROM `inscripcion` INNER JOIN materia ON inscripcion.idMateria=materia.idMateria INNER JOIN alumno ON inscripcion.idAlumno=alumno.idAlumno WHERE inscripcion.idAlumno="+id;
+            String sql= "SELECT inscripcion.idAlumno,inscripcion.idMateria,idInscripcion,nota,materia.nombre FROM `inscripcion` INNER JOIN materia ON inscripcion.idMateria=materia.idMateria INNER JOIN alumno ON inscripcion.idAlumno=alumno.idAlumno WHERE inscripcion.idAlumno="+id;
             ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
@@ -99,6 +99,7 @@ public class InscripcionData {
                 inscripcion.setAlumno(alumno);
                 inscripcion.setIdInscripcion(rs.getInt("idInscripcion"));
                 inscripcion.setNota(rs.getInt("nota"));
+                materia.setNombre(rs.getString("nombre"));
                 inscripcion.setMateria(materia);
                 inscripciones.add(inscripcion);
             }
