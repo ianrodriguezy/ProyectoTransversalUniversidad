@@ -32,7 +32,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         itemManipulacionNotas = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         itemConsultaAlumnoPorMateria = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
+        jmSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,8 +114,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar.add(jMenu4);
 
-        jMenu5.setText("Salir");
-        jMenuBar.add(jMenu5);
+        jmSalir.setText("Salir");
+        jmSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmSalirActionPerformed(evt);
+            }
+        });
+        jMenuBar.add(jmSalir);
 
         setJMenuBar(jMenuBar);
 
@@ -184,6 +189,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
        Desktop.moveToFront(cam);
     }//GEN-LAST:event_itemConsultaAlumnoPorMateriaActionPerformed
 
+    private void jmSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmSalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jmSalirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -231,7 +240,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar;
+    private javax.swing.JMenu jmSalir;
     // End of variables declaration//GEN-END:variables
 }

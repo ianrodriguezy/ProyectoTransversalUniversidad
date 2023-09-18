@@ -8,8 +8,10 @@ import Universidad.Entidades.Alumno;
 import Universidad.Entidades.Inscripcion;
 import Universidad.Entidades.Materia;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -26,8 +28,10 @@ public class gestionNotas extends javax.swing.JInternalFrame {
     }
     private DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int f, int c) {
-            return false;
-        }
+           
+        return c==2;
+    }
+    
     };
 
     private void cargarModelo() {
@@ -76,9 +80,19 @@ public class gestionNotas extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTablaNotas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTablaNotasKeyTyped(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTablaNotas);
 
         jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -153,11 +167,30 @@ public class gestionNotas extends javax.swing.JInternalFrame {
     private void jcbAlumnoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbAlumnoItemStateChanged
         Alumno alumno=(Alumno)jcbAlumno.getSelectedItem();
         borrarFilas();
-        inscripciones= InscripcionData.obtenerInscripcionesPorAlumno(alumno.getIdAlumno());
-        for(Object insc : inscripciones){
-           
+        for (Inscripcion insc : InscripcionData.obtenerInscripcionesPorAlumno(alumno.getIdAlumno())){
+            modelo.addRow(new Object []{
+                insc.getMateria().getIdMateria(),
+                insc.getMateria().getNombre(),
+                insc.getNota()
+            });
         }
     }//GEN-LAST:event_jcbAlumnoItemStateChanged
+
+    private void jTablaNotasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTablaNotasKeyTyped
+
+    }//GEN-LAST:event_jTablaNotasKeyTyped
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+       Alumno alumno = new Alumno();
+       alumno=(Alumno)jcbAlumno.getSelectedItem();
+       try {
+                   
+                    InscripcionData.actualizarNota(alumno.getIdAlumno(), Integer.parseInt(modelo.getValueAt(jTablaNotas.getSelectedRow(),0).toString()), Double.parseDouble(modelo.getValueAt(jTablaNotas.getSelectedRow(), 2).toString()));
+                    
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null,"Ingrese solamente numeros");
+                }
+    }//GEN-LAST:event_jbGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

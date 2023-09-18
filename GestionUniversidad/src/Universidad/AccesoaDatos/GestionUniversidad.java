@@ -14,8 +14,8 @@ public class GestionUniversidad {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //Conectar.getConectar();
-        InscripcionData.actualizarNota(1, 2, 7);
+        Conectar.getConectar();
+       
     }
     
 }
