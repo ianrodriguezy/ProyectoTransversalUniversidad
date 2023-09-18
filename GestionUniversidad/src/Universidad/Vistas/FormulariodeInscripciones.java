@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
  
     List alumnos=new ArrayList<>();
-    List materia=new ArrayList<>();
+    
     
     private DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int f, int c) {
@@ -24,9 +24,7 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
         }
     };
     
-    private void cargarMaterias(){
-        materia = MateriaData.listarMaterias();
-    }
+    
     
     private void cargarModelo (){
         modelo.addColumn("ID");
@@ -51,7 +49,7 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
         alumnos=AlumnoData.listarAlumno();
            cargarCombo();
            cargarModelo();
-           cargarMaterias();
+          
     }
 
     /**
