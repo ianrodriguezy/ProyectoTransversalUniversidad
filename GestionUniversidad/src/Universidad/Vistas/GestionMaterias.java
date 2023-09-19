@@ -20,6 +20,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     
     
     public GestionMaterias() {
+        super("Materia");
         initComponents();
     }
     

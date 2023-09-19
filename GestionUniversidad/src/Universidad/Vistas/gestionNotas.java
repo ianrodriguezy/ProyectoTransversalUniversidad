@@ -21,6 +21,7 @@ public class gestionNotas extends javax.swing.JInternalFrame {
     List inscripciones=new ArrayList<>();
     
     public gestionNotas() {
+         super("Carga de notas");
         initComponents();
         alumnos=AlumnoData.listarAlumno();
         cargarCombo();

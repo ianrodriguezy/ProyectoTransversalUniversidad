@@ -24,7 +24,9 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     public int auxId;
     
     public GestionAlumnos() {
+        super("Alumnos");
         initComponents();
+          
     }
 
     public void limpiar(){

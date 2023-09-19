@@ -19,6 +19,7 @@ public class ConsultaAlumnoPorMateria extends javax.swing.JInternalFrame {
 
     List materias=new ArrayList<>();
     public ConsultaAlumnoPorMateria() {
+         super("Consulta de Alumnos");
         initComponents();
         materias=MateriaData.listarMaterias();
         cargarCombo();

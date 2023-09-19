@@ -45,6 +45,7 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
     }
     
     public FormulariodeInscripciones() {
+         super("Formulario de Inscripción");
         initComponents();
         alumnos=AlumnoData.listarAlumno();
            cargarCombo();
