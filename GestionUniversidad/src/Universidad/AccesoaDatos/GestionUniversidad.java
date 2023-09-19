@@ -4,6 +4,8 @@
  */
 package Universidad.AccesoaDatos;
 
+import Universidad.Vistas.MenuPrincipal;
+
 /**
  *
  * @author Ian
@@ -15,7 +17,11 @@ public class GestionUniversidad {
      */
     public static void main(String[] args) {
         Conectar.getConectar();
-       
+        MenuPrincipal miApp= new MenuPrincipal();
+        
+        //miApp.repaint();
+        miApp.setVisible(true);
+        //miApp.repaint();
     }
     
 }
