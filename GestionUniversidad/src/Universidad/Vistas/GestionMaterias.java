@@ -238,6 +238,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         int aux;
 
         if (jtCodigo.getText().isEmpty() || jtNombre.getText().isEmpty() || jtAnio.getText().isEmpty()) {
+            
             JOptionPane.showMessageDialog(null, "Todos o alguno de los campos se encuentran vacios, por favor rellene todos.");
 
         } else {

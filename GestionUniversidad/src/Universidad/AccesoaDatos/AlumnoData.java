@@ -9,11 +9,12 @@ import java.sql.Statement;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 public class AlumnoData {
 
-    private Connection con;
+    private Connection con=null;
 
     public AlumnoData() {
     }
@@ -34,7 +35,8 @@ public class AlumnoData {
         } catch (SQLException x) {
             System.out.println("Error " + x.getMessage());
         }
-        JOptionPane.showMessageDialog(null, "Alta exitosa");
+         mostrarMensaje("Alta exitosa.","Creacion de Alumno","info");
+        
 
     }
 
@@ -60,12 +62,12 @@ public class AlumnoData {
                 alumno.setActivo(1);
 
             } else {
-                JOptionPane.showMessageDialog(null, "No existe el alumno");
+                mostrarMensaje("No existe el Alumno ","Error al buscar","error");
 
                 ps.close();
             }
         }catch (SQLException ex) {
-                        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno " + ex.getMessage());
+                        mostrarMensaje("Error al acceder a la tabla Alumno, " + ex.getMessage(),"Error de conexión","error");
 
                     }
             return alumno;
@@ -94,12 +96,11 @@ public class AlumnoData {
                 alumno.setActivo(rs.getInt("estado"));
 
             } else if (nuevo!=1){
-                JOptionPane.showMessageDialog(null, "No existe el alumno");
-
+                mostrarMensaje("No existe el Alumno ","Error al buscar","error");
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno " + ex.getMessage());
+            mostrarMensaje("Error al acceder a la tabla Alumno, " + ex.getMessage(),"Error de conexión","error");
         }
 
         return alumno;
@@ -127,7 +128,7 @@ public class AlumnoData {
             }
             ps.close();
         }catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno " + ex.getMessage());
+            mostrarMensaje("Error al acceder a la tabla Alumno, " + ex.getMessage(),"Error de conexión","error");
             
         }
         return alumnos;
@@ -152,13 +153,13 @@ public class AlumnoData {
 
             int exito = ps.executeUpdate();
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
+                mostrarMensaje("Modificado exitosamente.","Modificacion de Alumno","info");
             } else {
-                JOptionPane.showMessageDialog(null, "El alumno no existe");
+                mostrarMensaje("El alumno no existe","Error al eliminar","error");
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno " + ex.getMessage());
+            mostrarMensaje("Error al acceder a la tabla Alumno, " + ex.getMessage(),"Error de conexión","error");
         }
     }
 
@@ -174,11 +175,24 @@ public class AlumnoData {
             int fila = ps.executeUpdate();
 
             if (fila == 1) {
-                JOptionPane.showMessageDialog(null, " Se eliminó el alumno.");
+                mostrarMensaje("Se eliminó el alumno.","Borrado de Alumno","info");
             }
             ps.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Alumno");
+            mostrarMensaje("Error al acceder a la tabla Alumno","Error al conectar","error");
         }
+    }
+    
+    public static void mostrarMensaje(String mensaje,String titulo,String tipo ){
+        JOptionPane optionPane = new JOptionPane(mensaje);
+        if(tipo.equals("info")){
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if(tipo.equals("error")){
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        }
+        JDialog dialog= optionPane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
     }
 }

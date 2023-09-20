@@ -5,6 +5,7 @@
 package Universidad.Vistas;
 
 import Universidad.AccesoaDatos.AlumnoData;
+import static Universidad.AccesoaDatos.AlumnoData.mostrarMensaje;
 import Universidad.AccesoaDatos.Conectar;
 import Universidad.Entidades.Alumno;
 import java.sql.*;
@@ -232,7 +233,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         Alumno al = new Alumno();
        
         if (jtDoc.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Ingrese un dni para buscar el Alumno.");
+            mostrarMensaje("Ingrese un dni para buscar el Alumno.", "Error al buscar", "error");
         } else {
             
             boolean aux;
@@ -265,11 +266,10 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         int aux;
 
         if (jtDoc.getText().isEmpty() || jtApellido.getText().isEmpty() || jtNombre.getText().isEmpty() || jdFechaNac.getDate() == null) {
-            JOptionPane.showMessageDialog(null, "Todos o alguno de los campos se encuentran vacios, por favor rellene todos.");
-
+            mostrarMensaje("Todos o alguno de los campos se encuentran vacios, por favor rellene todos.", "Error al crear Alumno", "error");
         } else {
             if(AlumnoData.buscarAlumnoPorDni(Integer.parseInt(jtDoc.getText()),1)!=null){
-                JOptionPane.showMessageDialog(null, "El Alumno que desea agregar ya existe.");
+                mostrarMensaje("El Alumno que desea agregar ya existe.", "Error al crear Alumno", "error");
             }else{
             
             if (jrbEstado.isSelected()) {
@@ -318,7 +318,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         int aux;
         
         if (jtDoc.getText().isEmpty() || jtApellido.getText().isEmpty() || jtNombre.getText().isEmpty() || jdFechaNac.getDate() == null) {
-            JOptionPane.showMessageDialog(null, "Todos o alguno de los campos se encuentran vacios, por favor rellene todos.");
+            mostrarMensaje("Todos o alguno de los campos se encuentran vacios, por favor rellene todos.", "Error al crear Alumno", "error");
         }else{
             if (jrbEstado.isSelected()) {
                 aux = 1;

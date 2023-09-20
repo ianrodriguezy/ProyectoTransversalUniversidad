@@ -4,6 +4,7 @@
  */
 package Universidad.AccesoaDatos;
 
+import static Universidad.AccesoaDatos.AlumnoData.mostrarMensaje;
 import Universidad.Entidades.Alumno;
 import Universidad.Entidades.Inscripcion;
 import Universidad.Entidades.Materia;
@@ -41,11 +42,11 @@ public class InscripcionData {
             if(rs.next()){
                 
                 insc.setIdInscripcion(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Inscripción registrada.");
+                mostrarMensaje("Inscripción registrada.","Nueva inscripción","info");
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripcion.");
+            mostrarMensaje("Error al acceder a la tabla Inscripción, "+ex.getMessage(),"Error al conectar","error");
         }
         
     }
@@ -75,7 +76,7 @@ public class InscripcionData {
             }
             ps.close();
         }catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripcion " + ex.getMessage());
+            mostrarMensaje("Error al acceder a la tabla Inscripción, "+ex.getMessage(),"Error al conectar","error");
             
         }
         return inscripciones;
@@ -105,7 +106,7 @@ public class InscripcionData {
             }
             ps.close();
         }catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia " + ex.getMessage());
+           mostrarMensaje("Error al acceder a la tabla Materia, "+ex.getMessage(),"Error al conectar","error");
             
         }
         return inscripciones;
@@ -129,7 +130,7 @@ public class InscripcionData {
             }
             ps.close();
         }catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripcion" + ex.getMessage());
+            mostrarMensaje("Error al acceder a la tabla Inscripción, "+ex.getMessage(),"Error al conectar","error");
             
         }
         return materiasCursadas;
@@ -155,7 +156,7 @@ public class InscripcionData {
             }
             ps.close();
         }catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia e inscripcion" + ex.getMessage());
+            mostrarMensaje("Error al acceder a la tabla Inscripción, "+ex.getMessage(),"Error al conectar","error");
             
         }
         return materiasNoCursadas;
@@ -169,12 +170,12 @@ public class InscripcionData {
             PreparedStatement ps=con.prepareStatement(sql);
             int filas=ps.executeUpdate();
             if(filas>0){
-                JOptionPane.showMessageDialog(null, "Inscripcion Elimada");
+                mostrarMensaje("Inscripción eliminada.","Modificación","info");
             }
             
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripcion.");
+            mostrarMensaje("Error al acceder a la tabla Inscripción, "+ex.getMessage(),"Error al conectar","error");
         }
         
     }
@@ -188,12 +189,12 @@ public class InscripcionData {
             
             int filas=ps.executeUpdate();
             if(filas>0){
-                JOptionPane.showMessageDialog(null, "Nota actualizada.");
+                mostrarMensaje("Nota actualizada.","Modificación","info");
             }
    
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripcion."+ex.getMessage());
+            mostrarMensaje("Error al acceder a la tabla Inscripción, "+ex.getMessage(),"Error al conectar","error");
         }
         
                 
@@ -220,7 +221,7 @@ public class InscripcionData {
             }
             ps.close();
         }catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripcion y alumno" + ex.getMessage());
+            mostrarMensaje("Error al acceder a la tabla Inscripción y Alumno, "+ex.getMessage(),"Error al conectar","error");
             
         }
         return alumnos;

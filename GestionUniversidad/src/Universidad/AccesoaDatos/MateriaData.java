@@ -4,6 +4,7 @@
  */
 package Universidad.AccesoaDatos;
 
+import static Universidad.AccesoaDatos.AlumnoData.mostrarMensaje;
 import Universidad.Entidades.Alumno;
 import Universidad.Entidades.Materia;
 import java.sql.Connection;
@@ -35,10 +36,10 @@ public class MateriaData {
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
 
-        } catch (SQLException x) {
-            System.out.println("Error " + x.getMessage());
+        } catch (SQLException ex) {
+            mostrarMensaje("Error al acceder a la tabla Materia "+ex.getMessage(),"Error al conectar","error");
         }
-        JOptionPane.showMessageDialog(null, "Materia creada exitosamente.");
+        mostrarMensaje("Materia creada exitosamente.","Nueva materia","info");
     }
     
     public static Materia buscarMateria(int id, int nuevo){
@@ -61,12 +62,12 @@ public class MateriaData {
                 materia.setActivo(rs.getInt("estado"));
 
             } else if(nuevo!=1){
-                JOptionPane.showMessageDialog(null, "No existe la materia");
-
+                mostrarMensaje("No existe la materia","Error","error");
+                
                 ps.close();
             }
         }catch (SQLException ex) {
-                        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia " + ex.getMessage());
+                        mostrarMensaje("Error al acceder a la tabla Materia "+ex.getMessage(),"Error al conectar","error");
 
                     }
             return materia;
@@ -87,13 +88,13 @@ public class MateriaData {
 
             int exito = ps.executeUpdate();
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Modificada Exitosamente.");
+                mostrarMensaje("Materia modificada exitosamente.","Modificación","info");
             } else {
-                JOptionPane.showMessageDialog(null, "La materia no existe");
+                mostrarMensaje("No existe la materia","Error","error");
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia " + ex.getMessage());
+            mostrarMensaje("Error al acceder a la tabla Materia "+ex.getMessage(),"Error al conectar","error");
         }
     }
     
@@ -109,11 +110,11 @@ public class MateriaData {
             int fila = ps.executeUpdate();
 
             if (fila == 1) {
-                JOptionPane.showMessageDialog(null, " Se eliminó la materia.");
+                mostrarMensaje("Se eliminó la materia.","Modificación","info");
             }
             ps.close();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Materia");
+        } catch (SQLException ex) {
+           mostrarMensaje("Error al acceder a la tabla Materia "+ex.getMessage(),"Error al conectar","error");
         }
     }
     public static List<Materia> listarMaterias(){
@@ -136,7 +137,7 @@ public class MateriaData {
             }
             ps.close();
         }catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia " + ex.getMessage());
+            mostrarMensaje("Error al acceder a la tabla Materia "+ex.getMessage(),"Error al conectar","error");
             
         }
         return materias;  
