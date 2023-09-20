@@ -2,6 +2,7 @@
 package Universidad.Vistas;
 
 import Universidad.AccesoaDatos.AlumnoData;
+import static Universidad.AccesoaDatos.AlumnoData.mostrarMensaje;
 import Universidad.AccesoaDatos.InscripcionData;
 import Universidad.AccesoaDatos.MateriaData;
 import Universidad.Entidades.Alumno;
@@ -189,7 +190,7 @@ public class gestionNotas extends javax.swing.JInternalFrame {
                     InscripcionData.actualizarNota(alumno.getIdAlumno(), Integer.parseInt(modelo.getValueAt(jTablaNotas.getSelectedRow(),0).toString()), Double.parseDouble(modelo.getValueAt(jTablaNotas.getSelectedRow(), 2).toString()));
                     
                 } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(null,"Ingrese solamente numeros");
+                    mostrarMensaje("Ingrese solamente numeros", "Error", "error");
                 }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
