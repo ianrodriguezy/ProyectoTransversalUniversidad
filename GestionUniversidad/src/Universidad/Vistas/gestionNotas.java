@@ -2,6 +2,7 @@
 package Universidad.Vistas;
 
 import Universidad.AccesoaDatos.AlumnoData;
+import static Universidad.AccesoaDatos.AlumnoData.mostrarMensaje;
 import Universidad.AccesoaDatos.InscripcionData;
 import Universidad.AccesoaDatos.MateriaData;
 import Universidad.Entidades.Alumno;
@@ -21,6 +22,7 @@ public class gestionNotas extends javax.swing.JInternalFrame {
     List inscripciones=new ArrayList<>();
     
     public gestionNotas() {
+         super("Carga de notas");
         initComponents();
         alumnos=AlumnoData.listarAlumno();
         cargarCombo();
@@ -166,6 +168,10 @@ public class gestionNotas extends javax.swing.JInternalFrame {
 
     private void jcbAlumnoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbAlumnoItemStateChanged
         Alumno alumno=(Alumno)jcbAlumno.getSelectedItem();
+        if(alumno==null){
+            mostrarMensaje("No seleccionó ningún Alumno","Error","error");
+            borrarFilas();
+        }else{
         borrarFilas();
         for (Inscripcion insc : InscripcionData.obtenerInscripcionesPorAlumno(alumno.getIdAlumno())){
             modelo.addRow(new Object []{
@@ -173,7 +179,7 @@ public class gestionNotas extends javax.swing.JInternalFrame {
                 insc.getMateria().getNombre(),
                 insc.getNota()
             });
-        }
+        }}
     }//GEN-LAST:event_jcbAlumnoItemStateChanged
 
     private void jTablaNotasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTablaNotasKeyTyped
@@ -183,15 +189,20 @@ public class gestionNotas extends javax.swing.JInternalFrame {
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
        Alumno alumno = new Alumno();
        alumno=(Alumno)jcbAlumno.getSelectedItem();
+       if(alumno==null){
+            mostrarMensaje("No seleccionó ningún Alumno","Error","error");
+       }else if(jTablaNotas.getSelectedRowCount()==0){
+           mostrarMensaje("No seleccionó ninguna fila o la tabla se encuentra vacía","Error","error");
+       }else{
        try {
                    
                     InscripcionData.actualizarNota(alumno.getIdAlumno(), Integer.parseInt(modelo.getValueAt(jTablaNotas.getSelectedRow(),0).toString()), Double.parseDouble(modelo.getValueAt(jTablaNotas.getSelectedRow(), 2).toString()));
                     
                 } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(null,"Ingrese solamente numeros");
+                    mostrarMensaje("Ingrese solamente numeros", "Error", "error");
                 }
     }//GEN-LAST:event_jbGuardarActionPerformed
-
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -207,6 +218,7 @@ public class gestionNotas extends javax.swing.JInternalFrame {
     private void cargarCombo() {
 
         DefaultComboBoxModel<Alumno> modeloCombo = new DefaultComboBoxModel<>();
+        modeloCombo.addElement((Alumno)null);
         for (Object alumno : alumnos) {
             modeloCombo.addElement((Alumno) alumno);
         }

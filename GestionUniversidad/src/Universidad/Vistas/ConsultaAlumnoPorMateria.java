@@ -19,10 +19,12 @@ public class ConsultaAlumnoPorMateria extends javax.swing.JInternalFrame {
 
     List materias=new ArrayList<>();
     public ConsultaAlumnoPorMateria() {
+         super("Consulta de Alumnos");
         initComponents();
         materias=MateriaData.listarMaterias();
         cargarCombo();
         cargarModelo();
+        cargarTabla();
     }
      private DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int f, int c) {
@@ -36,6 +38,19 @@ public class ConsultaAlumnoPorMateria extends javax.swing.JInternalFrame {
         modelo.addColumn("Nombre");
         jtAlumXmat.setModel(modelo);
         
+    }
+    private void cargarTabla(){
+        Materia mat=new Materia();
+       mat=(Materia)jcbMaterias.getSelectedItem();
+       borrarFilas();
+       for(Alumno alum : InscripcionData.obtenerAlumnoPorMateria(mat.getIdMateria())){
+           modelo.addRow(new Object []{
+               alum.getIdAlumno(),
+               alum.getDni(),
+               alum.getApellido(),
+               alum.getNombre()
+            });
+       }
     }
   
     @SuppressWarnings("unchecked")
@@ -140,19 +155,8 @@ public class ConsultaAlumnoPorMateria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jcbMateriasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbMateriasItemStateChanged
-       Materia mat=new Materia();
-       mat=(Materia)jcbMaterias.getSelectedItem();
-       borrarFilas();
-       for(Alumno alum : InscripcionData.obtenerAlumnoPorMateria(mat.getIdMateria())){
-           modelo.addRow(new Object []{
-               alum.getIdAlumno(),
-               alum.getDni(),
-               alum.getApellido(),
-               alum.getNombre()
-            });
-       }
-       
-       
+       cargarTabla();
+      
     }//GEN-LAST:event_jcbMateriasItemStateChanged
 
     private void cargarCombo() {

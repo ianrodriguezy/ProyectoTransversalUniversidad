@@ -5,6 +5,7 @@
 package Universidad.Vistas;
 
 import Universidad.AccesoaDatos.AlumnoData;
+import static Universidad.AccesoaDatos.AlumnoData.mostrarMensaje;
 import Universidad.AccesoaDatos.MateriaData;
 import Universidad.Entidades.Alumno;
 import Universidad.Entidades.Materia;
@@ -20,6 +21,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     
     
     public GestionMaterias() {
+        super("Materia");
         initComponents();
     }
     
@@ -237,11 +239,12 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         int aux;
 
         if (jtCodigo.getText().isEmpty() || jtNombre.getText().isEmpty() || jtAnio.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Todos o alguno de los campos se encuentran vacios, por favor rellene todos.");
+            
+            mostrarMensaje("Todos o alguno de los campos se encuentran vacios, por favor rellene todos.", "Error al crear Materia", "error");
 
         } else {
             if (MateriaData.buscarMateria(Integer.parseInt(jtCodigo.getText()), 1) != null) {
-                JOptionPane.showMessageDialog(null, "La materia que desea agregar ya existe.");
+                mostrarMensaje("La materia que desea agregar ya existe.", "Error al crear Materia", "error");
             } else {
                 ver = true;
                 if (jcbEstado.isSelected()) {
@@ -267,7 +270,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
        Materia mat = new Materia();
        
         if (jtCodigo.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Ingrese un codigo para buscar la materia.");
+            mostrarMensaje("Ingrese un codigo para buscar la Materia.", "Error al buscar", "error");
         } else {
             
             boolean aux;
@@ -308,7 +311,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         int aux;
         
         if (jtCodigo.getText().isEmpty() || jtNombre.getText().isEmpty() ||  jtAnio.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Todos o alguno de los campos se encuentran vacios, por favor rellene todos.");
+            mostrarMensaje("Todos o alguno de los campos se encuentran vacios, por favor rellene todos.", "Error al modificar Materia", "error");
         }else{
             if (jcbEstado.isSelected()) {
                 aux = 1;

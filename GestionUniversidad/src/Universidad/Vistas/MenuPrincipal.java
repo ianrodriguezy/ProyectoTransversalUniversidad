@@ -1,7 +1,10 @@
 
 package Universidad.Vistas;
 
+
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+
 
 
 public class MenuPrincipal extends javax.swing.JFrame {
@@ -9,6 +12,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     
     public MenuPrincipal() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/contenido/icon.png")).getImage());
         this.setLocationRelativeTo(null);
         
     }
