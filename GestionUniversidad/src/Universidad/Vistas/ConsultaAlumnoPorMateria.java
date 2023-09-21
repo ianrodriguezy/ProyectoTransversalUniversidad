@@ -24,6 +24,7 @@ public class ConsultaAlumnoPorMateria extends javax.swing.JInternalFrame {
         materias=MateriaData.listarMaterias();
         cargarCombo();
         cargarModelo();
+        cargarTabla();
     }
      private DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int f, int c) {
