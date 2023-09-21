@@ -2,6 +2,7 @@
 package Universidad.Vistas;
 
 import Universidad.AccesoaDatos.AlumnoData;
+import static Universidad.AccesoaDatos.AlumnoData.mostrarMensaje;
 import Universidad.AccesoaDatos.InscripcionData;
 import Universidad.AccesoaDatos.MateriaData;
 import Universidad.Entidades.Alumno;
@@ -253,6 +254,8 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
             borrarFilas();
         
         
+        }else if(alumno==null){
+            mostrarMensaje("No seleccionó ningún Alumno","Error","error");
         }else{
             borrarFilas();
             jcbNoInscriptas.setSelected(false);
@@ -271,7 +274,8 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
         if(evt.getStateChange()== java.awt.event.ItemEvent.DESELECTED){
             borrarFilas();
         
-        
+        }else if(alumno==null){
+            mostrarMensaje("No seleccionó ningún Alumno","Error","error");
         }else{
             borrarFilas();
             jcbInscriptas.setSelected(false);
@@ -309,7 +313,7 @@ private void cargarCombo(){
 
 DefaultComboBoxModel<Alumno> modeloCombo = new DefaultComboBoxModel<>();
 
-
+ modeloCombo.addElement((Alumno) null);
 for (Object alumno : alumnos) {
     modeloCombo.addElement((Alumno) alumno);
 }

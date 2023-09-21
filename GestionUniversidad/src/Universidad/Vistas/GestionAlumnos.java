@@ -91,6 +91,18 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
+        jtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtApellidoKeyTyped(evt);
+            }
+        });
+
+        jtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtNombreKeyTyped(evt);
+            }
+        });
+
         jbBuscar.setText("Buscar");
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -333,6 +345,22 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             limpiar();
         }     
     }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtApellidoKeyTyped
+        char key = evt.getKeyChar();
+        boolean letra = Character.isLetter(key)|| Character.isWhitespace(key);
+        if (!letra) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtApellidoKeyTyped
+
+    private void jtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtNombreKeyTyped
+        char key = evt.getKeyChar();
+        boolean letra = Character.isLetter(key)|| Character.isWhitespace(key);
+        if (!letra) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtNombreKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

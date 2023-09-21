@@ -38,6 +38,19 @@ public class ConsultaAlumnoPorMateria extends javax.swing.JInternalFrame {
         jtAlumXmat.setModel(modelo);
         
     }
+    private void cargarTabla(){
+        Materia mat=new Materia();
+       mat=(Materia)jcbMaterias.getSelectedItem();
+       borrarFilas();
+       for(Alumno alum : InscripcionData.obtenerAlumnoPorMateria(mat.getIdMateria())){
+           modelo.addRow(new Object []{
+               alum.getIdAlumno(),
+               alum.getDni(),
+               alum.getApellido(),
+               alum.getNombre()
+            });
+       }
+    }
   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -141,19 +154,8 @@ public class ConsultaAlumnoPorMateria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jcbMateriasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbMateriasItemStateChanged
-       Materia mat=new Materia();
-       mat=(Materia)jcbMaterias.getSelectedItem();
-       borrarFilas();
-       for(Alumno alum : InscripcionData.obtenerAlumnoPorMateria(mat.getIdMateria())){
-           modelo.addRow(new Object []{
-               alum.getIdAlumno(),
-               alum.getDni(),
-               alum.getApellido(),
-               alum.getNombre()
-            });
-       }
-       
-       
+       cargarTabla();
+      
     }//GEN-LAST:event_jcbMateriasItemStateChanged
 
     private void cargarCombo() {
