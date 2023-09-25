@@ -39,7 +39,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         itemConsultaAlumnoPorMateria = new javax.swing.JMenuItem();
         jmSalir = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Universidad de la Punta");
@@ -107,20 +106,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar.add(jMenu4);
 
         jmSalir.setText("Salir");
+        jmSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmSalirMouseClicked(evt);
+            }
+        });
         jmSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmSalirActionPerformed(evt);
             }
         });
-
-        jMenuItem1.setText("Salir");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jmSalir.add(jMenuItem1);
-
         jMenuBar.add(jmSalir);
 
         setJMenuBar(jMenuBar);
@@ -181,13 +176,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jmSalirActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        int opcion=JOptionPane.showConfirmDialog(null, "Esta seguro que desea salir?", "", JOptionPane.YES_NO_OPTION);
+    private void jmSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmSalirMouseClicked
+       int opcion=JOptionPane.showConfirmDialog(null, "Esta seguro que desea salir?", "", JOptionPane.YES_NO_OPTION);
         if (opcion == JOptionPane.YES_OPTION) {
             // El usuario seleccionó "Sí", realiza la acción correspondiente
             System.exit(0);
         }   
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jmSalirMouseClicked
 
     /**
      * @param args the command line arguments
@@ -237,7 +232,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu jmSalir;
     // End of variables declaration//GEN-END:variables
 }

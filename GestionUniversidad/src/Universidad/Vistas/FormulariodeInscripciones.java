@@ -141,6 +141,11 @@ public class FormulariodeInscripciones extends javax.swing.JFrame {
                 jcbInscriptasStateChanged(evt);
             }
         });
+        jcbInscriptas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbInscriptasActionPerformed(evt);
+            }
+        });
 
         jcbNoInscriptas.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jcbNoInscriptas.setText("Materias no Inscriptas");
@@ -155,35 +160,38 @@ public class FormulariodeInscripciones extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(141, 141, 141)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jbInscribir)
-                        .addGap(54, 54, 54)
-                        .addComponent(jbAnularInsc)
-                        .addGap(60, 60, 60)
-                        .addComponent(jbSalir))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jcbInscriptas)
-                        .addGap(59, 59, 59)
-                        .addComponent(jcbNoInscriptas))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
+                        .addComponent(jLabel2)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(51, 51, 51)
+                                .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jbInscribir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbAnularInsc)
+                .addGap(86, 86, 86)
+                .addComponent(jbSalir)
+                .addGap(44, 44, 44))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addComponent(jcbInscriptas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jcbNoInscriptas)
+                .addGap(68, 68, 68))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,145 +208,146 @@ public class FormulariodeInscripciones extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcbInscriptas)
                     .addComponent(jcbNoInscriptas))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(286, 286, 286)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jbSalir)
-                            .addComponent(jbAnularInsc)
-                            .addComponent(jbInscribir))
-                        .addGap(22, 22, 22))))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbAnularInsc)
+                    .addComponent(jbInscribir)
+                    .addComponent(jbSalir))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jcbAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAlumnosActionPerformed
+    private void jcbNoInscriptasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbNoInscriptasItemStateChanged
+        Alumno alumno=(Alumno)jcbAlumnos.getSelectedItem();
+        if(evt.getStateChange()== java.awt.event.ItemEvent.DESELECTED){
+            borrarFilas();
 
-    }//GEN-LAST:event_jcbAlumnosActionPerformed
+        }else if(alumno==null){
+            mostrarMensaje("No seleccionó ningún Alumno","Error","error");
+        }else{
+            borrarFilas();
+            jcbInscriptas.setSelected(false);
+            jbAnularInsc.setEnabled(false);
+            jbInscribir.setEnabled(true);
+            for(Materia m : InscripcionData.obtenerMateriasNoCursadas(alumno.getIdAlumno())){
+                modelo.addRow(new Object[]{
+                    m.getIdMateria(),
+                    m.getNombre(),
+                    m.getAnioMateria()});}
+    }//GEN-LAST:event_jcbNoInscriptasItemStateChanged
+
+    private void jcbInscriptasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jcbInscriptasStateChanged
+   //asd
+    }//GEN-LAST:event_jcbInscriptasStateChanged
+
+    private void jcbInscriptasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbInscriptasItemStateChanged
+
+        Alumno alumno=(Alumno)jcbAlumnos.getSelectedItem();
+        if(evt.getStateChange()== java.awt.event.ItemEvent.DESELECTED){
+            borrarFilas();
+
+        }else if(alumno==null){
+            mostrarMensaje("No seleccionó ningún Alumno","Error","error");
+        }else{
+            borrarFilas();
+            jcbNoInscriptas.setSelected(false);
+            jbAnularInsc.setEnabled(true);
+            jbInscribir.setEnabled(false);
+            for(Materia m : InscripcionData.obtenerMateriasCursadas(alumno.getIdAlumno())){
+                modelo.addRow(new Object[]{
+                    m.getIdMateria(),
+                    m.getNombre(),
+                    m.getAnioMateria()});}
+        }
+    }//GEN-LAST:event_jcbInscriptasItemStateChanged
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         MenuPrincipal menu=new MenuPrincipal();
         menu.setVisible(true);
         this.dispose();
-          
+
     }//GEN-LAST:event_jbSalirActionPerformed
 
-    private void jcbAlumnosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbAlumnosItemStateChanged
-        
-       if (evt.getStateChange() == java.awt.event.ItemEvent.DESELECTED) {
-            borrarFilas();
-            jcbInscriptas.setSelected(false);
-            jcbNoInscriptas.setSelected(false);
-       }
-    }//GEN-LAST:event_jcbAlumnosItemStateChanged
-
-    private void jcbInscriptasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jcbInscriptasStateChanged
-        
-    }//GEN-LAST:event_jcbInscriptasStateChanged
-
-    private void jcbInscriptasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbInscriptasItemStateChanged
-       
-        Alumno alumno=(Alumno)jcbAlumnos.getSelectedItem();
-        if(evt.getStateChange()== java.awt.event.ItemEvent.DESELECTED){
-            borrarFilas();
-        
-        
-        }else if(alumno==null){
-            mostrarMensaje("No seleccionó ningún Alumno","Error","error");
-        }else{
-            borrarFilas();
-            jcbNoInscriptas.setSelected(false);
-            jbAnularInsc.setEnabled(true);
-            jbInscribir.setEnabled(false);
-            for(Materia m : InscripcionData.obtenerMateriasCursadas(alumno.getIdAlumno())){
-            modelo.addRow(new Object[]{
-                m.getIdMateria(),
-                m.getNombre(),
-                m.getAnioMateria()});}
-        }
-    }//GEN-LAST:event_jcbInscriptasItemStateChanged
-
-    private void jcbNoInscriptasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbNoInscriptasItemStateChanged
-        Alumno alumno=(Alumno)jcbAlumnos.getSelectedItem();
-        if(evt.getStateChange()== java.awt.event.ItemEvent.DESELECTED){
-            borrarFilas();
-        
-        }else if(alumno==null){
-            mostrarMensaje("No seleccionó ningún Alumno","Error","error");
-        }else{
-            borrarFilas();
-            jcbInscriptas.setSelected(false);
-            jbAnularInsc.setEnabled(false);
-            jbInscribir.setEnabled(true);
-            for(Materia m : InscripcionData.obtenerMateriasNoCursadas(alumno.getIdAlumno())){
-            modelo.addRow(new Object[]{
-                m.getIdMateria(),
-                m.getNombre(),
-                m.getAnioMateria()});}
-    }//GEN-LAST:event_jcbNoInscriptasItemStateChanged
-    }
-    
-    private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
-       Alumno alumno= (Alumno) jcbAlumnos.getSelectedItem();
-       
-       if(jtablaMaterias.getSelectedRow()==-1){
-           mostrarMensaje("Seleccione una materia para inscribir","Error","error");
-       }else{
-       Materia mat=new Materia();
-       mat.setIdMateria((int)jtablaMaterias.getValueAt(jtablaMaterias.getSelectedRow(), 0)); 
-       Inscripcion insc= new Inscripcion(alumno,mat, 0);
-       guardarInscripcion(insc);
-       borrarFilas();
-            jcbInscriptas.setSelected(false);
-            jbAnularInsc.setEnabled(false);
-            jbInscribir.setEnabled(true);
-            for(Materia m : InscripcionData.obtenerMateriasNoCursadas(alumno.getIdAlumno())){
-            modelo.addRow(new Object[]{
-                m.getIdMateria(),
-                m.getNombre(),
-                m.getAnioMateria()});}
-    }                                  
-      
-    }//GEN-LAST:event_jbInscribirActionPerformed
-
     private void jbAnularInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAnularInscActionPerformed
-       Alumno alumno= (Alumno) jcbAlumnos.getSelectedItem();
-       
-       if(jtablaMaterias.getSelectedRow()==-1){
-           mostrarMensaje("Seleccione una materia para eliminar inscripción","Error","error");
-       }else{
-       Materia mat=new Materia();
-       mat.setIdMateria((int)jtablaMaterias.getValueAt(jtablaMaterias.getSelectedRow(), 0)); 
-       InscripcionData.borrarInscripcionMateriaALumno(alumno.getIdAlumno(), mat.getIdMateria());
-       borrarFilas();
+        Alumno alumno= (Alumno) jcbAlumnos.getSelectedItem();
+
+        if(jtablaMaterias.getSelectedRow()==-1){
+            mostrarMensaje("Seleccione una materia para eliminar inscripción","Error","error");
+        }else{
+            Materia mat=new Materia();
+            mat.setIdMateria((int)jtablaMaterias.getValueAt(jtablaMaterias.getSelectedRow(), 0));
+            InscripcionData.borrarInscripcionMateriaALumno(alumno.getIdAlumno(), mat.getIdMateria());
+            borrarFilas();
             jcbInscriptas.setSelected(true);
             jbAnularInsc.setEnabled(true);
             jbInscribir.setEnabled(false);
             for(Materia m : InscripcionData.obtenerMateriasCursadas(alumno.getIdAlumno())){
-            modelo.addRow(new Object[]{
-                m.getIdMateria(),
-                m.getNombre(),
-                m.getAnioMateria()});}
-    }                                  
-      
+                modelo.addRow(new Object[]{
+                    m.getIdMateria(),
+                    m.getNombre(),
+                    m.getAnioMateria()});}
+        }
+
     }//GEN-LAST:event_jbAnularInscActionPerformed
+
+    private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
+        Alumno alumno= (Alumno) jcbAlumnos.getSelectedItem();
+
+        if(jtablaMaterias.getSelectedRow()==-1){
+            mostrarMensaje("Seleccione una materia para inscribir","Error","error");
+        }else{
+            Materia mat=new Materia();
+            mat.setIdMateria((int)jtablaMaterias.getValueAt(jtablaMaterias.getSelectedRow(), 0));
+            Inscripcion insc= new Inscripcion(alumno,mat, 0);
+            guardarInscripcion(insc);
+            borrarFilas();
+            jcbInscriptas.setSelected(false);
+            jbAnularInsc.setEnabled(false);
+            jbInscribir.setEnabled(true);
+            for(Materia m : InscripcionData.obtenerMateriasNoCursadas(alumno.getIdAlumno())){
+                modelo.addRow(new Object[]{
+                    m.getIdMateria(),
+                    m.getNombre(),
+                    m.getAnioMateria()});}
+        }
+
+    }//GEN-LAST:event_jbInscribirActionPerformed
+
+    private void jcbAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAlumnosActionPerformed
+
+    }//GEN-LAST:event_jcbAlumnosActionPerformed
+
+    private void jcbAlumnosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbAlumnosItemStateChanged
+
+        if (evt.getStateChange() == java.awt.event.ItemEvent.DESELECTED) {
+            borrarFilas();
+            jcbInscriptas.setSelected(false);
+            jcbNoInscriptas.setSelected(false);
+        }
+    }//GEN-LAST:event_jcbAlumnosItemStateChanged
+
+    private void jcbInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbInscriptasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbInscriptasActionPerformed
     
+        
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
