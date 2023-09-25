@@ -27,7 +27,7 @@ public class MateriaData {
         
         Connection con = null;
         PreparedStatement ps = null;
-
+        int id=0;
         String sql = "INSERT INTO `materia`( `nombre`, `año`, `estado`) VALUES ('"+materia.getNombre()+"','"+materia.getAnioMateria()+"','"+materia.getActivo()+"')";
         con = Conectar.getConectar();
 
@@ -35,11 +35,15 @@ public class MateriaData {
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
-
+            ResultSet generatedKeys = ps.getGeneratedKeys();
+            if(generatedKeys.next()){
+                id =generatedKeys.getInt(1);
+            }
+            
         } catch (SQLException ex) {
             mostrarMensaje("Error al acceder a la tabla Materia "+ex.getMessage(),"Error al conectar","error");
         }
-        mostrarMensaje("Materia creada exitosamente.","Nueva materia","info");
+        mostrarMensaje("Materia creada exitosamente con el código "+id,"Nueva materia","info");
     }
     
     public static Materia buscarMateria(int id, int nuevo){
