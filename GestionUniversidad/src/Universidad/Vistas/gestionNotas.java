@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,8 +23,9 @@ public class gestionNotas extends javax.swing.JFrame {
     List inscripciones=new ArrayList<>();
     
     public gestionNotas() {
-         super("Carga de notas");
+        super("Carga de notas");
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/contenido/icon.png")).getImage());
         this.setLocationRelativeTo(null);
         alumnos=AlumnoData.listarAlumno();
         cargarCombo();
@@ -59,19 +61,25 @@ public class gestionNotas extends javax.swing.JFrame {
         jTablaNotas = new javax.swing.JTable();
         jbGuardar = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/NOTA.png"))); // NOI18N
         jLabel1.setText("CARGA DE NOTAS");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 11, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel2.setText("Seleccione un Alumno");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 95, -1, -1));
 
         jcbAlumno.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jcbAlumnoItemStateChanged(evt);
             }
         });
+        jPanel1.add(jcbAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(273, 89, 185, -1));
 
         jTablaNotas.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jTablaNotas.setModel(new javax.swing.table.DefaultTableModel(
@@ -92,12 +100,15 @@ public class gestionNotas extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTablaNotas);
 
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 121, 500, 254));
+
         jbGuardar.setText("Guardar");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbGuardarActionPerformed(evt);
             }
         });
+        jPanel1.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 387, -1, -1));
 
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -105,49 +116,10 @@ public class gestionNotas extends javax.swing.JFrame {
                 jbSalirActionPerformed(evt);
             }
         });
+        jPanel1.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(414, 387, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(47, 47, 47)
-                .addComponent(jcbAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jbGuardar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbSalir)
-                .addGap(42, 42, 42))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jcbAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbSalir)
-                    .addComponent(jbGuardar))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/fondoventana - copia.png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 460));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -185,7 +157,7 @@ public class gestionNotas extends javax.swing.JFrame {
                 mostrarMensaje("Ingrese solamente numeros", "Error", "error");
             }
     }//GEN-LAST:event_jbGuardarActionPerformed
-
+    }
     private void jTablaNotasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTablaNotasKeyTyped
 
     }//GEN-LAST:event_jTablaNotasKeyTyped
@@ -210,6 +182,7 @@ public class gestionNotas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTablaNotas;

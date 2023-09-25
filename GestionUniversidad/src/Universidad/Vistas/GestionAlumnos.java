@@ -15,6 +15,7 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 import javax.swing.JOptionPane;
 
@@ -27,6 +28,7 @@ public class GestionAlumnos extends javax.swing.JFrame {
     public GestionAlumnos() {
         super("Alumnos");
         initComponents();
+         setIconImage(new ImageIcon(getClass().getResource("/contenido/icon.png")).getImage());
         this.setLocationRelativeTo(null);
           
     }
@@ -64,27 +66,36 @@ public class GestionAlumnos extends javax.swing.JFrame {
         jbSalir = new javax.swing.JButton();
         jdFechaNac = new com.toedter.calendar.JDateChooser();
         jrbEstado = new javax.swing.JCheckBox();
+        jLabel7 = new javax.swing.JLabel();
+
+        jPgestion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/alum.png"))); // NOI18N
         jLabel1.setText("ALUMNO");
         jLabel1.setMaximumSize(new java.awt.Dimension(50, 50));
         jLabel1.setPreferredSize(new java.awt.Dimension(50, 50));
+        jPgestion.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 24, 199, 53));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel2.setText("Documento");
+        jPgestion.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 111, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel3.setText("Apellido");
+        jPgestion.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 166, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel4.setText("Nombre");
+        jPgestion.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 217, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel5.setText("Estado");
+        jPgestion.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 263, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel6.setText("Fecha de Nacimiento");
+        jPgestion.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, -1));
 
         jtDoc.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jtDoc.setToolTipText("");
@@ -101,6 +112,7 @@ public class GestionAlumnos extends javax.swing.JFrame {
                 jtDocKeyTyped(evt);
             }
         });
+        jPgestion.add(jtDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 107, 189, -1));
 
         jtApellido.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -108,6 +120,7 @@ public class GestionAlumnos extends javax.swing.JFrame {
                 jtApellidoKeyTyped(evt);
             }
         });
+        jPgestion.add(jtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 162, 189, -1));
 
         jtNombre.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -115,6 +128,7 @@ public class GestionAlumnos extends javax.swing.JFrame {
                 jtNombreKeyTyped(evt);
             }
         });
+        jPgestion.add(jtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 213, 189, 24));
 
         jbBuscar.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jbBuscar.setText("Buscar");
@@ -123,6 +137,7 @@ public class GestionAlumnos extends javax.swing.JFrame {
                 jbBuscarActionPerformed(evt);
             }
         });
+        jPgestion.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(433, 103, -1, -1));
 
         jbNuevo.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jbNuevo.setText("Nuevo");
@@ -131,6 +146,7 @@ public class GestionAlumnos extends javax.swing.JFrame {
                 jbNuevoActionPerformed(evt);
             }
         });
+        jPgestion.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 377, -1, -1));
 
         jbEliminar.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jbEliminar.setText("Eliminar");
@@ -140,6 +156,7 @@ public class GestionAlumnos extends javax.swing.JFrame {
                 jbEliminarActionPerformed(evt);
             }
         });
+        jPgestion.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(193, 377, -1, -1));
 
         jbGuardar.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jbGuardar.setText("Guardar");
@@ -149,6 +166,7 @@ public class GestionAlumnos extends javax.swing.JFrame {
                 jbGuardarActionPerformed(evt);
             }
         });
+        jPgestion.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(299, 377, -1, -1));
 
         jbSalir.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jbSalir.setText("Salir");
@@ -157,87 +175,15 @@ public class GestionAlumnos extends javax.swing.JFrame {
                 jbSalirActionPerformed(evt);
             }
         });
+        jPgestion.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(404, 377, 64, -1));
+        jPgestion.add(jdFechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 306, 151, -1));
 
-        javax.swing.GroupLayout jPgestionLayout = new javax.swing.GroupLayout(jPgestion);
-        jPgestion.setLayout(jPgestionLayout);
-        jPgestionLayout.setHorizontalGroup(
-            jPgestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPgestionLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(jPgestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addGap(59, 59, 59)
-                .addGroup(jPgestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPgestionLayout.createSequentialGroup()
-                        .addGroup(jPgestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jdFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jrbEstado))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPgestionLayout.createSequentialGroup()
-                        .addGroup(jPgestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtDoc, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
-                            .addComponent(jtNombre)
-                            .addComponent(jtApellido))
-                        .addGap(34, 34, 34)
-                        .addComponent(jbBuscar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(jPgestionLayout.createSequentialGroup()
-                .addGap(99, 99, 99)
-                .addComponent(jbNuevo)
-                .addGap(29, 29, 29)
-                .addComponent(jbEliminar)
-                .addGap(31, 31, 31)
-                .addComponent(jbGuardar)
-                .addGap(31, 31, 31)
-                .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPgestionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(128, 128, 128))
-        );
-        jPgestionLayout.setVerticalGroup(
-            jPgestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPgestionLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addGroup(jPgestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbBuscar)
-                    .addComponent(jLabel2))
-                .addGap(28, 28, 28)
-                .addGroup(jPgestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(jPgestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPgestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPgestionLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel5)
-                        .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPgestionLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jrbEstado)
-                        .addGap(24, 24, 24)))
-                .addGroup(jPgestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6)
-                    .addComponent(jdFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addGroup(jPgestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbNuevo)
-                    .addComponent(jbEliminar)
-                    .addComponent(jbGuardar)
-                    .addComponent(jbSalir))
-                .addContainerGap(52, Short.MAX_VALUE))
-        );
+        jrbEstado.setBorder(null);
+        jPgestion.add(jrbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 258, -1, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/fondoventana.png"))); // NOI18N
+        jLabel7.setText("jLabel7");
+        jPgestion.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -4, 510, 460));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -388,6 +334,7 @@ public class GestionAlumnos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPgestion;
     private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbEliminar;

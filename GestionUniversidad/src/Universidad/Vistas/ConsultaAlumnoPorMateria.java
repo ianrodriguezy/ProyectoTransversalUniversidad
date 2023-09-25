@@ -9,9 +9,12 @@ import Universidad.AccesoaDatos.MateriaData;
 import Universidad.Entidades.Alumno;
 import Universidad.Entidades.Inscripcion;
 import Universidad.Entidades.Materia;
+import java.awt.BorderLayout;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -21,6 +24,7 @@ public class ConsultaAlumnoPorMateria extends javax.swing.JFrame {
     public ConsultaAlumnoPorMateria() {
          super("Consulta de Alumnos");
         initComponents();
+         setIconImage(new ImageIcon(getClass().getResource("/contenido/icon.png")).getImage());
         this.setLocationRelativeTo(null);
         materias=MateriaData.listarMaterias();
         cargarCombo();
@@ -51,7 +55,7 @@ public class ConsultaAlumnoPorMateria extends javax.swing.JFrame {
                alum.getApellido(),
                alum.getNombre()
             });
-       }
+       }   
     }
   
     @SuppressWarnings("unchecked")
@@ -62,7 +66,7 @@ public class ConsultaAlumnoPorMateria extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jcbMaterias = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scroll = new javax.swing.JScrollPane();
         jtAlumXmat = new javax.swing.JTable();
         jbSalir = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -81,12 +85,15 @@ public class ConsultaAlumnoPorMateria extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
 
         jcbMaterias.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jcbMaterias.setBorder(null);
         jcbMaterias.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jcbMateriasItemStateChanged(evt);
             }
         });
         jPanel1.add(jcbMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 179, -1));
+
+        scroll.setForeground(new java.awt.Color(255, 255, 0));
 
         jtAlumXmat.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jtAlumXmat.setModel(new javax.swing.table.DefaultTableModel(
@@ -100,12 +107,13 @@ public class ConsultaAlumnoPorMateria extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jtAlumXmat);
+        scroll.setViewportView(jtAlumXmat);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 119, 510, 250));
+        jPanel1.add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 119, 510, 250));
 
         jbSalir.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jbSalir.setText("Salir");
+        jbSalir.setBorder(null);
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbSalirActionPerformed(evt);
@@ -155,9 +163,9 @@ public class ConsultaAlumnoPorMateria extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbSalir;
     private javax.swing.JComboBox<Materia> jcbMaterias;
     private javax.swing.JTable jtAlumXmat;
+    private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables
 }
