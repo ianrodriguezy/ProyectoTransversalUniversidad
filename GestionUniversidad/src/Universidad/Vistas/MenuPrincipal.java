@@ -47,7 +47,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Desktop.setLayout(DesktopLayout);
         DesktopLayout.setHorizontalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGap(0, 812, Short.MAX_VALUE)
         );
         DesktopLayout.setVerticalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -58,10 +58,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Root.setLayout(RootLayout);
         RootLayout.setHorizontalGroup(
             RootLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RootLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Desktop)
-                .addContainerGap())
+            .addComponent(Desktop)
         );
         RootLayout.setVerticalGroup(
             RootLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
