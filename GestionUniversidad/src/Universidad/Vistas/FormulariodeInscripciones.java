@@ -15,7 +15,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 
-public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
+public class FormulariodeInscripciones extends javax.swing.JFrame {
  
     List alumnos=new ArrayList<>();
     
@@ -41,6 +41,7 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
     public FormulariodeInscripciones() {
          super("Formulario de Inscripción");
         initComponents();
+        this.setLocationRelativeTo(null);
         alumnos=AlumnoData.listarAlumno();
            cargarCombo();
            cargarModelo();
@@ -69,10 +70,11 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
         jcbInscriptas = new javax.swing.JCheckBox();
         jcbNoInscriptas = new javax.swing.JCheckBox();
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel1.setText("Formulario de Inscripción");
+        jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/inscripcion.png"))); // NOI18N
+        jLabel1.setText("FORMULARIO DE INSCRIPCIÓN");
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel2.setText("Selecciona un Alumno");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -89,6 +91,7 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
             }
         });
 
+        jtablaMaterias.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jtablaMaterias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -102,6 +105,7 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
         ));
         jScrollPane2.setViewportView(jtablaMaterias);
 
+        jbInscribir.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jbInscribir.setText("Inscribir");
         jbInscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +113,7 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
             }
         });
 
+        jbAnularInsc.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jbAnularInsc.setText("Anular Inscripción");
         jbAnularInsc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,6 +121,7 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
             }
         });
 
+        jbSalir.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,7 +129,7 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
             }
         });
 
-        jcbInscriptas.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jcbInscriptas.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jcbInscriptas.setText("Materias Inscriptas");
         jcbInscriptas.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -136,7 +142,7 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
             }
         });
 
-        jcbNoInscriptas.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jcbNoInscriptas.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jcbNoInscriptas.setText("Materias no Inscriptas");
         jcbNoInscriptas.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -149,21 +155,11 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(141, 141, 141)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -178,15 +174,23 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
                         .addGap(52, 52, 52)
                         .addComponent(jcbInscriptas)
                         .addGap(59, 59, 59)
-                        .addComponent(jcbNoInscriptas)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                        .addComponent(jcbNoInscriptas))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -214,7 +218,7 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,7 +233,10 @@ public class FormulariodeInscripciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jcbAlumnosActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
-          this.dispose();
+        MenuPrincipal menu=new MenuPrincipal();
+        menu.setVisible(true);
+        this.dispose();
+          
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jcbAlumnosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbAlumnosItemStateChanged

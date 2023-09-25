@@ -27,7 +27,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         Root = new javax.swing.JPanel();
-        Desktop = new javax.swing.JDesktopPane();
+        bg = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         itemFormAlumno = new javax.swing.JMenuItem();
@@ -42,28 +42,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Universidad de la Punta");
+        setResizable(false);
 
-        javax.swing.GroupLayout DesktopLayout = new javax.swing.GroupLayout(Desktop);
-        Desktop.setLayout(DesktopLayout);
-        DesktopLayout.setHorizontalGroup(
-            DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 812, Short.MAX_VALUE)
-        );
-        DesktopLayout.setVerticalGroup(
-            DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 589, Short.MAX_VALUE)
-        );
+        Root.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout RootLayout = new javax.swing.GroupLayout(Root);
-        Root.setLayout(RootLayout);
-        RootLayout.setHorizontalGroup(
-            RootLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Desktop)
-        );
-        RootLayout.setVerticalGroup(
-            RootLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Desktop)
-        );
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/fondo_1.png"))); // NOI18N
+        Root.add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
 
         jMenu1.setText("Alumno");
 
@@ -155,48 +140,41 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void itemManejoInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemManejoInscripcionesActionPerformed
-       Desktop.removeAll();
-       Desktop.repaint();
        FormulariodeInscripciones fi = new FormulariodeInscripciones();
        fi.setVisible(true);
-       Desktop.add(fi);
-       Desktop.moveToFront(fi);
+      this.setVisible(false);
     }//GEN-LAST:event_itemManejoInscripcionesActionPerformed
 
     private void itemFormAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemFormAlumnoActionPerformed
-       Desktop.removeAll();
-       Desktop.repaint();
        GestionAlumnos ga = new GestionAlumnos();
        ga.setVisible(true);
-       Desktop.add(ga);
-       Desktop.moveToFront(ga);
+       this.setVisible(false);
+       
     }//GEN-LAST:event_itemFormAlumnoActionPerformed
 
     private void itemGestionMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemGestionMateriasActionPerformed
-       Desktop.removeAll();
-       Desktop.repaint();
+       
        GestionMaterias gm = new GestionMaterias();
        gm.setVisible(true);
-       Desktop.add(gm);
-       Desktop.moveToFront(gm);
+       this.setVisible(false);
+      
     }//GEN-LAST:event_itemGestionMateriasActionPerformed
 
     private void itemManipulacionNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemManipulacionNotasActionPerformed
-       Desktop.removeAll();
-       Desktop.repaint();
+       
        gestionNotas gn = new gestionNotas();
        gn.setVisible(true);
-       Desktop.add(gn);
-       Desktop.moveToFront(gn);
+       this.setVisible(false);
+       
     }//GEN-LAST:event_itemManipulacionNotasActionPerformed
 
     private void itemConsultaAlumnoPorMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemConsultaAlumnoPorMateriaActionPerformed
-       Desktop.removeAll();
-       Desktop.repaint();
+
+      
        ConsultaAlumnoPorMateria cam = new ConsultaAlumnoPorMateria();
        cam.setVisible(true);
-       Desktop.add(cam);
-       Desktop.moveToFront(cam);
+       this.setVisible(false);
+       
     }//GEN-LAST:event_itemConsultaAlumnoPorMateriaActionPerformed
 
     private void jmSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmSalirActionPerformed
@@ -247,8 +225,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane Desktop;
     private javax.swing.JPanel Root;
+    private javax.swing.JLabel bg;
     private javax.swing.JMenuItem itemConsultaAlumnoPorMateria;
     private javax.swing.JMenuItem itemFormAlumno;
     private javax.swing.JMenuItem itemGestionMaterias;
