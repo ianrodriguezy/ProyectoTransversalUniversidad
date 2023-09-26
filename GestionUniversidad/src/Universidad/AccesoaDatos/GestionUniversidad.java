@@ -4,7 +4,7 @@
  */
 package Universidad.AccesoaDatos;
 
-import Universidad.Vistas.MenuPrincipal;
+import Universidad.Vistas.Login;
 
 /**
  *
@@ -17,11 +17,8 @@ public class GestionUniversidad {
      */
     public static void main(String[] args) {
         Conectar.getConectar();
-        MenuPrincipal miApp= new MenuPrincipal();
-        
-        //miApp.repaint();
-        miApp.setVisible(true);
-        //miApp.repaint();
+        Login log = new Login();
+        log.setVisible(true);
     }
     
 }

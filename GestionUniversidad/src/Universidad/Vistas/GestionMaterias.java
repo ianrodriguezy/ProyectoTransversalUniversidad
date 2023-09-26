@@ -4,25 +4,20 @@
  */
 package Universidad.Vistas;
 
-import Universidad.AccesoaDatos.AlumnoData;
 import static Universidad.AccesoaDatos.AlumnoData.mostrarMensaje;
 import Universidad.AccesoaDatos.MateriaData;
-import Universidad.Entidades.Alumno;
 import Universidad.Entidades.Materia;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
 
-/**
- *
- * @author Ian
- */
-public class GestionMaterias extends javax.swing.JInternalFrame {
+
+public class GestionMaterias extends javax.swing.JFrame {
     
     
     public GestionMaterias() {
         super("Materia");
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/contenido/icon.png")).getImage());
+        this.setLocationRelativeTo(null);
     }
     
     public void limpiar(){
@@ -56,17 +51,39 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         jbGuardar = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
         jcbEstado = new javax.swing.JCheckBox();
+        jLabel7 = new javax.swing.JLabel();
 
-        jLabel1.setText("Materia");
+        setMinimumSize(new java.awt.Dimension(512, 460));
 
-        jLabel2.setText("Codigo");
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/materias.png"))); // NOI18N
+        jLabel1.setText("MATERIAS");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 20, 250, -1));
+
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Código");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 103, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nombre");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 178, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Año");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Estado");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, 10));
 
+        jtCodigo.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtCodigoActionPerformed(evt);
@@ -77,27 +94,38 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 jtCodigoKeyTyped(evt);
             }
         });
+        jPanel1.add(jtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 99, 80, -1));
 
+        jtNombre.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jPanel1.add(jtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 174, 160, -1));
+
+        jtAnio.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jtAnio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtAnioKeyTyped(evt);
             }
         });
+        jPanel1.add(jtAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 80, -1));
 
+        jbBuscar.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jbBuscar.setText("Buscar");
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbBuscarActionPerformed(evt);
             }
         });
+        jPanel1.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 95, 75, -1));
 
+        jbNuevo.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jbNuevo.setText("Nuevo");
         jbNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbNuevoActionPerformed(evt);
             }
         });
+        jPanel1.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 412, -1, -1));
 
+        jbEliminar.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jbEliminar.setText("Eliminar");
         jbEliminar.setEnabled(false);
         jbEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +133,9 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 jbEliminarActionPerformed(evt);
             }
         });
+        jPanel1.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 412, -1, -1));
 
+        jbGuardar.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jbGuardar.setText("Guardar");
         jbGuardar.setEnabled(false);
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -113,84 +143,22 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 jbGuardarActionPerformed(evt);
             }
         });
+        jPanel1.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(261, 412, -1, -1));
 
+        jbSalir.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbSalirActionPerformed(evt);
             }
         });
+        jPanel1.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(399, 412, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel5))
-                                .addGap(69, 69, 69)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
-                                            .addComponent(jtNombre)
-                                            .addComponent(jtAnio))
-                                        .addGap(37, 37, 37)
-                                        .addComponent(jbBuscar))
-                                    .addComponent(jcbEstado)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jbNuevo)
-                                .addGap(18, 18, 18)
-                                .addComponent(jbEliminar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jbGuardar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jbSalir))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(jLabel1)))
-                .addContainerGap(46, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbBuscar))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jcbEstado)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(8, 8, 8)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbNuevo)
-                    .addComponent(jbEliminar)
-                    .addComponent(jbGuardar)
-                    .addComponent(jbSalir))
-                .addGap(17, 17, 17))
-        );
+        jcbEstado.setBorder(null);
+        jPanel1.add(jcbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, -1, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/ventanaFondo.png"))); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 470));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -200,116 +168,23 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtCodigoActionPerformed
-
-    private void jtAnioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtAnioKeyTyped
-       int key=evt.getKeyChar();
-        boolean num= key>=48 && key<=57;
-        if(!num){
-            evt.consume();
-        }
-        
-        if(jtAnio.getText().length()>=1){
-           evt.consume();
-       }
-    }//GEN-LAST:event_jtAnioKeyTyped
-
-    private void jtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtCodigoKeyTyped
-        int key=evt.getKeyChar();
-        boolean num= key>=48 && key<=57;
-        if(!num){
-            evt.consume();
-        }
-        
-        if(jtCodigo.getText().length()>=4){
-           evt.consume();
-       }
-    }//GEN-LAST:event_jtCodigoKeyTyped
-
-    private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        boolean ver = false;
-        int aux;
-
-        if (jtCodigo.getText().isEmpty() || jtNombre.getText().isEmpty() || jtAnio.getText().isEmpty()) {
-            
-            mostrarMensaje("Todos o alguno de los campos se encuentran vacios, por favor rellene todos.", "Error al crear Materia", "error");
-
-        } else {
-            if (MateriaData.buscarMateria(Integer.parseInt(jtCodigo.getText()), 1) != null) {
-                mostrarMensaje("La materia que desea agregar ya existe.", "Error al crear Materia", "error");
-            } else {
-                ver = true;
-                if (jcbEstado.isSelected()) {
-                    aux = 1;
-                } else {
-                    aux = 0;
-                }
-                
-                Materia materia = new Materia(jtNombre.getText(), Integer.parseInt(jtAnio.getText()), aux);
-                MateriaData.guardarMateria(materia);
-
-                limpiar();
-
-            }
-        }
-    }//GEN-LAST:event_jbNuevoActionPerformed
-
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+        MenuPrincipal menu=new MenuPrincipal();
+        menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
 
-    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-       Materia mat = new Materia();
-       
-        if (jtCodigo.getText().isEmpty()) {
-            mostrarMensaje("Ingrese un codigo para buscar la Materia.", "Error al buscar", "error");
-        } else {
-            
-            boolean aux;
-            if(MateriaData.buscarMateria(Integer.parseInt(jtCodigo.getText()), 0)!=null){
-                mat=MateriaData.buscarMateria(Integer.parseInt(jtCodigo.getText()), 0);
-                
-                if (mat.getActivo() == 1 ) {
-                aux = true;
-            } else{
-                aux = false;
-            }
-                jtCodigo.setText(mat.getIdMateria()+"");
-                jtNombre.setText(mat.getNombre());
-                jtAnio.setText(mat.getAnioMateria()+"");
-                jcbEstado.setSelected(aux);
-            
-                
-            if(!mat.getNombre().isEmpty()){
-                jbEliminar.setEnabled(true);
-                jbGuardar.setEnabled(true);
-                jtCodigo.setEnabled(false);
-            }
-            }
-            
-            
-        }
-    }//GEN-LAST:event_jbBuscarActionPerformed
-
-    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        MateriaData.eliminarMateria(Integer.parseInt(jtCodigo.getText()));
-        jbGuardar.setEnabled(false);
-        jbEliminar.setEnabled(false);
-        jtCodigo.setEnabled(true);
-        limpiar();
-    }//GEN-LAST:event_jbEliminarActionPerformed
-
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         int aux;
-        
+
         if (jtCodigo.getText().isEmpty() || jtNombre.getText().isEmpty() ||  jtAnio.getText().isEmpty()) {
             mostrarMensaje("Todos o alguno de los campos se encuentran vacios, por favor rellene todos.", "Error al modificar Materia", "error");
         }else{
@@ -325,8 +200,103 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             jbEliminar.setEnabled(false);
             jtCodigo.setEnabled(true);
             limpiar();
-        }     
+        }
     }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+        MateriaData.eliminarMateria(Integer.parseInt(jtCodigo.getText()));
+        jbGuardar.setEnabled(false);
+        jbEliminar.setEnabled(false);
+        jtCodigo.setEnabled(true);
+        limpiar();
+    }//GEN-LAST:event_jbEliminarActionPerformed
+
+    private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
+        boolean ver = false;
+        int aux;
+
+        if (jtCodigo.getText().isEmpty() || jtNombre.getText().isEmpty() || jtAnio.getText().isEmpty()) {
+
+            mostrarMensaje("Todos o alguno de los campos se encuentran vacios, por favor rellene todos.", "Error al crear Materia", "error");
+
+        } else {
+            if (MateriaData.buscarMateria(Integer.parseInt(jtCodigo.getText()), 1) != null) {
+                mostrarMensaje("La materia que desea agregar ya existe.", "Error al crear Materia", "error");
+            } else {
+                ver = true;
+                if (jcbEstado.isSelected()) {
+                    aux = 1;
+                } else {
+                    aux = 0;
+                }
+
+                Materia materia = new Materia(jtNombre.getText(), Integer.parseInt(jtAnio.getText()), aux);
+                MateriaData.guardarMateria(materia);
+
+                limpiar();
+
+            }
+        }
+    }//GEN-LAST:event_jbNuevoActionPerformed
+
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        Materia mat = new Materia();
+
+        if (jtCodigo.getText().isEmpty()) {
+            mostrarMensaje("Ingrese un codigo para buscar la Materia.", "Error al buscar", "error");
+        } else {
+
+            boolean aux;
+            if(MateriaData.buscarMateria(Integer.parseInt(jtCodigo.getText()), 0)!=null){
+                mat=MateriaData.buscarMateria(Integer.parseInt(jtCodigo.getText()), 0);
+
+                if (mat.getActivo() == 1 ) {
+                    aux = true;
+                } else{
+                    aux = false;
+                }
+                jtCodigo.setText(mat.getIdMateria()+"");
+                jtNombre.setText(mat.getNombre());
+                jtAnio.setText(mat.getAnioMateria()+"");
+                jcbEstado.setSelected(aux);
+
+                if(!mat.getNombre().isEmpty()){
+                    jbEliminar.setEnabled(true);
+                    jbGuardar.setEnabled(true);
+                    jtCodigo.setEnabled(false);
+                }
+            }
+
+        }
+    }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void jtAnioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtAnioKeyTyped
+        int key=evt.getKeyChar();
+        boolean num= key>=48 && key<=57;
+        if(!num){
+            evt.consume();
+        }
+
+        if(jtAnio.getText().length()>=1){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtAnioKeyTyped
+
+    private void jtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtCodigoKeyTyped
+        int key=evt.getKeyChar();
+        boolean num= key>=48 && key<=57;
+        if(!num){
+            evt.consume();
+        }
+
+        if(jtCodigo.getText().length()>=4){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtCodigoKeyTyped
+
+    private void jtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtCodigoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -335,6 +305,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbEliminar;
