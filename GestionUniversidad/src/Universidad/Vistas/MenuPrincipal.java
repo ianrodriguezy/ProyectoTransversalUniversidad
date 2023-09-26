@@ -46,7 +46,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         Root.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/fondo_1.png"))); // NOI18N
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/fondoredu.png"))); // NOI18N
         Root.add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
 
         jMenu1.setText("Alumno");

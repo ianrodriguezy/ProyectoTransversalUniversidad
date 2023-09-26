@@ -66,11 +66,13 @@ public class gestionNotas extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/NOTA.png"))); // NOI18N
         jLabel1.setText("CARGA DE NOTAS");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 11, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Seleccione un Alumno");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 95, -1, -1));
 
@@ -118,7 +120,7 @@ public class gestionNotas extends javax.swing.JFrame {
         });
         jPanel1.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(414, 387, -1, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/fondoventana - copia.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/ventanaFondo.png"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 460));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

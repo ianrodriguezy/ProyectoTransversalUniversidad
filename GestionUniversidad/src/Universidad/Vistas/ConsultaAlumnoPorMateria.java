@@ -76,11 +76,13 @@ public class ConsultaAlumnoPorMateria extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/lista.png"))); // NOI18N
         jLabel1.setText("ALUMNOS POR MATERIA");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Seleccione una materia");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
 
@@ -112,8 +114,8 @@ public class ConsultaAlumnoPorMateria extends javax.swing.JFrame {
         jPanel1.add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 119, 510, 250));
 
         jbSalir.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jbSalir.setForeground(new java.awt.Color(0, 0, 0));
         jbSalir.setText("Salir");
-        jbSalir.setBorder(null);
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbSalirActionPerformed(evt);
@@ -121,7 +123,7 @@ public class ConsultaAlumnoPorMateria extends javax.swing.JFrame {
         });
         jPanel1.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, 65, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/fondoventana.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/ventanaFondo.png"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 440));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 440));

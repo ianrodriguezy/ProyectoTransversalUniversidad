@@ -76,9 +76,11 @@ public class FormulariodeInscripciones extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText(" Materias Inscriptas");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
 
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Materias no Inscriptas");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 140, -1));
 
@@ -102,15 +104,18 @@ public class FormulariodeInscripciones extends javax.swing.JFrame {
         jPanel1.add(jcbNoInscriptas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/inscripcion.png"))); // NOI18N
         jLabel1.setText("FORMULARIO DE INSCRIPCIÓN");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 12, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Selecciona un Alumno");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 80, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Listado de materias");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 112, 153, 25));
 
@@ -188,7 +193,7 @@ public class FormulariodeInscripciones extends javax.swing.JFrame {
         });
         jPanel1.add(jcbInscriptas, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/fondoventana.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/ventanaFondo.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 510, 480));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

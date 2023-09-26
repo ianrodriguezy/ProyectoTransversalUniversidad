@@ -71,6 +71,7 @@ public class GestionAlumnos extends javax.swing.JFrame {
         jPgestion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/alum.png"))); // NOI18N
         jLabel1.setText("ALUMNO");
         jLabel1.setMaximumSize(new java.awt.Dimension(50, 50));
@@ -78,24 +79,29 @@ public class GestionAlumnos extends javax.swing.JFrame {
         jPgestion.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 24, 199, 53));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Documento");
         jPgestion.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 111, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Apellido");
         jPgestion.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 166, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Nombre");
-        jPgestion.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 217, -1, -1));
+        jPgestion.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Estado");
         jPgestion.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 263, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Fecha de Nacimiento");
-        jPgestion.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, -1));
+        jPgestion.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
 
         jtDoc.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jtDoc.setToolTipText("");
@@ -112,7 +118,7 @@ public class GestionAlumnos extends javax.swing.JFrame {
                 jtDocKeyTyped(evt);
             }
         });
-        jPgestion.add(jtDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 107, 189, -1));
+        jPgestion.add(jtDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 107, 189, 20));
 
         jtApellido.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -120,7 +126,7 @@ public class GestionAlumnos extends javax.swing.JFrame {
                 jtApellidoKeyTyped(evt);
             }
         });
-        jPgestion.add(jtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 162, 189, -1));
+        jPgestion.add(jtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 162, 189, 20));
 
         jtNombre.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -128,7 +134,7 @@ public class GestionAlumnos extends javax.swing.JFrame {
                 jtNombreKeyTyped(evt);
             }
         });
-        jPgestion.add(jtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 213, 189, 24));
+        jPgestion.add(jtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 213, 189, 20));
 
         jbBuscar.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jbBuscar.setText("Buscar");
@@ -176,12 +182,12 @@ public class GestionAlumnos extends javax.swing.JFrame {
             }
         });
         jPgestion.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(404, 377, 64, -1));
-        jPgestion.add(jdFechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 306, 151, -1));
+        jPgestion.add(jdFechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 306, 151, 20));
 
         jrbEstado.setBorder(null);
         jPgestion.add(jrbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 258, -1, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/fondoventana.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/ventanaFondo.png"))); // NOI18N
         jLabel7.setText("jLabel7");
         jPgestion.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -4, 510, 460));
 

@@ -66,25 +66,30 @@ public class GestionMaterias extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/materias.png"))); // NOI18N
         jLabel1.setText("MATERIAS");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 20, 250, -1));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Código");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 103, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nombre");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 178, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Año");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 270, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Estado");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, -1, 10));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, 10));
 
         jtCodigo.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jtCodigo.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +165,7 @@ public class GestionMaterias extends javax.swing.JFrame {
         jcbEstado.setBorder(null);
         jPanel1.add(jcbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, -1, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/fondoventana - copia.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/ventanaFondo.png"))); // NOI18N
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 470));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
