@@ -4,16 +4,12 @@ package Universidad.Vistas;
 import Universidad.AccesoaDatos.AlumnoData;
 import static Universidad.AccesoaDatos.AlumnoData.mostrarMensaje;
 import Universidad.AccesoaDatos.InscripcionData;
-import Universidad.AccesoaDatos.MateriaData;
 import Universidad.Entidades.Alumno;
 import Universidad.Entidades.Inscripcion;
-import Universidad.Entidades.Materia;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 

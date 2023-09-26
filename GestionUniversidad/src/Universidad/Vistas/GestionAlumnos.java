@@ -6,18 +6,12 @@ package Universidad.Vistas;
 
 import Universidad.AccesoaDatos.AlumnoData;
 import static Universidad.AccesoaDatos.AlumnoData.mostrarMensaje;
-import Universidad.AccesoaDatos.Conectar;
 import Universidad.Entidades.Alumno;
-import java.sql.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
         
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
-import javax.swing.JOptionPane;
 
 
 

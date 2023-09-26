@@ -5,7 +5,6 @@ import Universidad.AccesoaDatos.AlumnoData;
 import static Universidad.AccesoaDatos.AlumnoData.mostrarMensaje;
 import Universidad.AccesoaDatos.InscripcionData;
 import static Universidad.AccesoaDatos.InscripcionData.guardarInscripcion;
-import Universidad.AccesoaDatos.MateriaData;
 import Universidad.Entidades.Alumno;
 import Universidad.Entidades.Inscripcion;
 import Universidad.Entidades.Materia;

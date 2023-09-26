@@ -7,14 +7,11 @@ package Universidad.Vistas;
 import Universidad.AccesoaDatos.InscripcionData;
 import Universidad.AccesoaDatos.MateriaData;
 import Universidad.Entidades.Alumno;
-import Universidad.Entidades.Inscripcion;
 import Universidad.Entidades.Materia;
-import java.awt.BorderLayout;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
-import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
 

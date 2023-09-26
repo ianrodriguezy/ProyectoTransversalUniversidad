@@ -4,20 +4,12 @@
  */
 package Universidad.Vistas;
 
-import Universidad.AccesoaDatos.AlumnoData;
 import static Universidad.AccesoaDatos.AlumnoData.mostrarMensaje;
 import Universidad.AccesoaDatos.MateriaData;
-import Universidad.Entidades.Alumno;
 import Universidad.Entidades.Materia;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
-/**
- *
- * @author Ian
- */
+
 public class GestionMaterias extends javax.swing.JFrame {
     
     
