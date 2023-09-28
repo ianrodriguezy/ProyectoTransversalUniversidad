@@ -203,7 +203,7 @@ public class InscripcionData {
         PreparedStatement ps = null;
         con = Conectar.getConectar();
         try{
-            String sql= "SELECT * FROM `alumno` WHERE idAlumno IN(SELECT idAlumno FROM inscripcion WHERE idMateria="+idMateria+")";
+            String sql= "SELECT * FROM `alumno` WHERE idAlumno IN(SELECT idAlumno FROM inscripcion WHERE idMateria="+idMateria+" AND alumno.estado=1)";
             ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
