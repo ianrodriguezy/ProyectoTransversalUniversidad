@@ -1,5 +1,6 @@
 # ProyectoTransversalUniversidad
 Sistema de Gestión Universitaria en Java
+
 Este proyecto es un sistema de gestión universitaria desarrollado en Java que permite administrar alumnos, notas, materias e inscripciones de manera eficiente. Proporciona una plataforma centralizada para realizar tareas administrativas esenciales en una universidad, 
 contando tambien con una validación de ingreso con usuario y contraseña.
 
