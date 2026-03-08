@@ -55,12 +55,11 @@ Sistema de administración universitaria desarrollado en **Java** con conexión 
 ```
 ProyectoTransversalUniversidad/
 └── GestionUniversidad/
-    ├── src/
-    │   ├── modelo/       # Entidades (Alumno, Materia, Nota...)
-    │   ├── dao/          # Acceso a datos
-    │   ├── servicio/     # Lógica de negocio
-    │   └── vista/        # Interfaz de usuario
-    └── ...
+    └── src/
+        └── Universidad/
+            ├── AccesoaDatos/     # Conexión y acceso a MySQL
+            ├── Entidades/        # Clases modelo (Alumno, Materia...)
+            └── Vistas/           # Interfaz de usuario
 ```
 
 ---
